@@ -1,19 +1,17 @@
-import React from 'react'
-import './base.scss'
-import Container from './container'
-import Navigation from './navigation'
+import React from "react";
+import "./base.scss";
+import Container from "./container";
+import Navigation from "./navigation";
+import useProfile from "../hooks/use-profile";
 
-class Template extends React.Component {
-  render() {
-    const { children } = this.props
+export default (props) => {
+  const { children } = props;
+  const author = useProfile();
 
-    return (
-      <Container>
-        <Navigation />
-        {children}
-      </Container>
-    )
-  }
-}
-
-export default Template
+  return (
+    <Container>
+      <Navigation data={author} />
+      {children}
+    </Container>
+  );
+};

@@ -1,1 +1,11 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.bg-primary {
+  * {
+    color: color-yiq($primary)
+  }
+}
+
+.navbar-toggler-icon {
+  background-image: escape-svg($navbar-dark-toggler-icon-bg);
+}

@@ -1,16 +1,35 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styles from './navigation.module.css'
+import React, { useState } from "react";
+import { Link } from "gatsby";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  Nav,
+  NavItem,
+} from "reactstrap";
 
-export default () => (
-  <nav role="navigation">
-    <ul className={styles.navigation}>
-      <li className={styles.navigationItem}>
-        <Link to="/">Home</Link>
-      </li>
-      <li className={styles.navigationItem}>
-        <Link to="/blog/">Blog</Link>
-      </li>
-    </ul>
-  </nav>
-)
+export default ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+  return (
+    <Navbar color="primary" expand="md">
+      <Link to="/" className="navbar-brand">{data.name}</Link>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="mr-auto" navbar>
+          <NavItem>
+            <Link to="/blog" className="nav-link">
+              Blog
+            </Link>
+          </NavItem>
+          <NavItem>
+            <a href={`https://github.com/${data.github}`} className="nav-link">
+              GitHub
+            </a>
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Navbar>
+  );
+};
