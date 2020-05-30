@@ -1,0 +1,28 @@
+@import "./base.scss";
+@import "../../node_modules/bootstrap/scss/type";
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.heroHeadline {
+  @extend .display-2;
+  font-weight: bold;
+  width: 66%;
+  @include media-breakpoint-down(sm) {
+    font-size: 3rem;
+    width: 100%;
+  }
+}
+
+.heroImage {
+  /*
+    Ensure golden ratio for the hero size while limiting it to some extend to
+    the viewport width
+  */
+  height: 61.8vh;
+  max-height: 400px;
+}
