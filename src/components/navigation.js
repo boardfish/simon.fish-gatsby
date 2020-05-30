@@ -7,13 +7,14 @@ import {
   Nav,
   NavItem,
 } from "reactstrap";
+import styles from './navigation.module.scss'
 
 export default ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
   return (
-    <Navbar color="primary" expand="md">
+    <Navbar color="primary" expand="md" className={styles.navigation}>
       <Link to="/" className="navbar-brand">{data.name}</Link>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>

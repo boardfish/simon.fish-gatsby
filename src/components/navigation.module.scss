@@ -1,0 +1,10 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/utilities";
+
+.navigation {
+  @extend .flex-md-column;
+  flex-grow: 1;
+  grid-column-start: 0;
+}
