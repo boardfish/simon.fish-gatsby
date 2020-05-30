@@ -6,6 +6,10 @@
   background-color: theme-color-level(primary, 2);
   flex-grow: 1;
   grid-column-start: 0;
+  @include media-breakpoint-down(sm) {
+    position: fixed;
+    width: 100vw;
+  }
 }
 
 .navContent {
