@@ -18,7 +18,7 @@ export default ({ data }) => {
       <Link to="/" className={styles.navbarBrand}>{data.name}</Link>
       <NavbarToggler onClick={toggle} className={styles.navbarTogglerIcon} />
       <Collapse isOpen={isOpen} navbar>
-        <Nav className="mr-auto" navbar className={styles.navContent}>
+        <Nav navbar className={styles.navContent}>
           <NavItem className={styles.navLinkWrapper}>
             <Link to="/blog" className={styles.navLink}>
               Blog

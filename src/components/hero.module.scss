@@ -2,27 +2,43 @@
 @import "../../node_modules/bootstrap/scss/type";
 
 .hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 66% auto;
+  align-items: center;
   height: 100vh;
 }
 
 .heroHeadline {
   @extend .display-2;
+  @extend .ml-md-3;
   font-weight: bold;
-  width: 66%;
+  grid-column: 1;
   @include media-breakpoint-down(sm) {
     font-size: 3rem;
     width: 100%;
   }
 }
 
+@keyframes flipIn {
+  from {
+    transform: rotateX(0) rotateY(0deg);
+    box-shadow: 1.5em 1.5em 0 0.2em $primary;
+    opacity: 0;
+  } to {
+    transform: rotateX(-30deg) rotateY(30deg);
+    box-shadow: 1.5em 1.5em 0 0.2em $gray-900;
+    opacity: 1;
+  }
+}
+
+.imageBlock {
+  height: 70%;
+}
 .heroImage {
-  /*
-    Ensure golden ratio for the hero size while limiting it to some extend to
-    the viewport width
-  */
-  height: 61.8vh;
-  max-height: 400px;
+  transform: rotateX(-30deg) rotateY(30deg);
+  box-shadow: 1.5em 1.5em 0 0.2em $gray-900;
+  margin-bottom: 2em;
+  width: auto;
+  height: auto;
+  animation: flipIn 1s ease-in-out 0s;
 }
