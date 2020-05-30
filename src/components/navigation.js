@@ -14,18 +14,18 @@ export default ({ data }) => {
 
   const toggle = () => setIsOpen(!isOpen);
   return (
-    <Navbar color="primary" expand="md" className={styles.navigation}>
-      <Link to="/" className="navbar-brand">{data.name}</Link>
+    <Navbar expand="md" className={styles.navigation}>
+      <Link to="/" className={styles.navbarBrand}>{data.name}</Link>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
-        <Nav className="mr-auto" navbar>
-          <NavItem>
-            <Link to="/blog" className="nav-link">
+        <Nav className="mr-auto" navbar className={styles.navContent}>
+          <NavItem className={styles.navLinkWrapper}>
+            <Link to="/blog" className={styles.navLink}>
               Blog
             </Link>
           </NavItem>
           <NavItem>
-            <a href={`https://github.com/${data.github}`} className="nav-link">
+            <a href={`https://github.com/${data.github}`} className={styles.navLink}>
               GitHub
             </a>
           </NavItem>
