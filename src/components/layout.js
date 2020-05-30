@@ -1,5 +1,5 @@
 import React from "react";
-import "./base.scss";
+import "../../node_modules/bootstrap/scss/bootstrap.scss";
 import Container from "./container";
 import Navigation from "./navigation";
 import useProfile from "../hooks/use-profile";
