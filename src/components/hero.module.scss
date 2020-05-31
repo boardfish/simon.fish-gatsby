@@ -2,17 +2,22 @@
 @import "../../node_modules/bootstrap/scss/type";
 
 .hero {
-  display: grid;
-  grid-template-columns: 66% auto;
-  align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  @include media-breakpoint-up(md) {
+    display: grid;
+    grid-template-columns: 66% auto;
+    align-items: center;
+  }
 }
 
 .heroHeadline {
   @extend .display-2;
   @extend .ml-md-3;
+  @extend .d-flex;
+  @extend .align-items-center;
   font-weight: bold;
   grid-column: 1;
+  min-height: 86vh;
   @include media-breakpoint-down(sm) {
     font-size: 3rem;
     width: 100%;
@@ -21,23 +26,18 @@
 
 @keyframes flipIn {
   from {
-    transform: rotateX(0) rotateY(0deg);
-    box-shadow: 1.5em 1.5em 0 0.2em $primary;
+    transform: translateY(2em) rotateX(0) rotateY(0deg);
     opacity: 0;
   }
   to {
-    transform: rotateX(-30deg) rotateY(30deg);
-    box-shadow: 1.5em 1.5em 0 0.2em $gray-900;
+    transform: translateY(0) rotateX(-30deg) rotateY(30deg);
     opacity: 1;
   }
 }
 
-.imageBlock {
-  height: 70%;
-}
 .heroImage {
   transform: rotateX(-30deg) rotateY(30deg);
-  box-shadow: 1.5em 1.5em 0 0.2em $gray-900;
+  box-shadow: .5em .5em 0.2em 0.2em rgba($gray-700, 0.4);
   margin-bottom: 2em;
   width: auto;
   height: auto;
