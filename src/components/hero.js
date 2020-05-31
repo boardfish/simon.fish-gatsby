@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
-
+import { graphql } from "gatsby";
 import styles from "./hero.module.scss";
 import usePortfolioImages from "../hooks/use-portfolio-images";
 
@@ -22,3 +22,22 @@ export default ({ data }) => {
     </div>
   );
 };
+
+export const query = graphql`
+  fragment portfolioImage on ContentfulPortfolioItemEdge {
+    node {
+      images {
+        fluid {
+          sizes
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          tracedSVG
+          base64
+          aspectRatio
+        }
+      }
+    }
+  }
+`;

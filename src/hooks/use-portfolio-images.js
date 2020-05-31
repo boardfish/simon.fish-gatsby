@@ -1,29 +1,22 @@
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby";
 
 export default () => {
   const { allContentfulPortfolioItem } = useStaticQuery(
     graphql`
       query GetPortfolioImages {
-        allContentfulPortfolioItem {
+        allContentfulPortfolioItem(
+          filter: { includeInHero: { eq: true } }
+          sort: { fields: date, order: DESC }
+        ) {
           edges {
-            node {
-              images {
-                fluid {
-                  sizes
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  tracedSVG
-                  base64
-                  aspectRatio
-                }
-              }
-            }
+            ...portfolioImage
           }
         }
       }
     `
-  )
-  return allContentfulPortfolioItem.edges.map(({ node }) => node.images).filter(images => images).flat()
-}
+  );
+  return allContentfulPortfolioItem.edges
+    .map(({ node }) => node.images)
+    .filter((images) => images)
+    .flat();
+};
