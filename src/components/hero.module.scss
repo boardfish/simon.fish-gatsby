@@ -24,7 +24,8 @@
     transform: rotateX(0) rotateY(0deg);
     box-shadow: 1.5em 1.5em 0 0.2em $primary;
     opacity: 0;
-  } to {
+  }
+  to {
     transform: rotateX(-30deg) rotateY(30deg);
     box-shadow: 1.5em 1.5em 0 0.2em $gray-900;
     opacity: 1;

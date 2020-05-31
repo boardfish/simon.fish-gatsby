@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby";
 
 export default () => {
   const { allContentfulPerson } = useStaticQuery(
@@ -14,6 +14,6 @@ export default () => {
         }
       }
     `
-  )
-  return allContentfulPerson.edges[0].node
-}
+  );
+  return allContentfulPerson.edges[0].node;
+};
