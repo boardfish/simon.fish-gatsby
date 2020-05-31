@@ -8,7 +8,14 @@ export default ({ data }) => {
   const images = usePortfolioImages();
   return (
     <div className={styles.hero}>
-      <h1 className={styles.heroHeadline}>{data.shortBio.shortBio}</h1>
+      <div className={styles.heroTextContainer}>
+        <h1 className={styles.heroHeadline}>{data.shortBio.shortBio}</h1>
+        <p className="lead">
+          University of Sheffield Computer Science graduate with a year of
+          industry experience. Experienced with{" "}
+          <span className="bg-light">Ruby</span>
+        </p>
+      </div>
       <div className={styles.imageBlock}>
         {images.slice(0, 3).map((image) => (
           <Img
