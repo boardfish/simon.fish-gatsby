@@ -3,11 +3,22 @@ import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import styles from "./hero.module.scss";
 import usePortfolioImages from "../hooks/use-portfolio-images";
+import { useStyletron } from "styletron-react";
 
 export default ({ data }) => {
   const images = usePortfolioImages();
+  const [css] = useStyletron();
   return (
-    <div className={styles.hero}>
+    <div
+      className={css({
+        minHeight: "100vh",
+        "@media (min-width: 768px)": {
+          display: "grid",
+          gridTemplateColumns: "66% auto",
+          alignItems: "center",
+        },
+      })}
+    >
       <div className={styles.heroTextContainer}>
         <h1 className={styles.heroHeadline}>{data.shortBio.shortBio}</h1>
         <p className="lead">
