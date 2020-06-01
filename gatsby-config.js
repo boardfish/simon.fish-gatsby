@@ -25,7 +25,10 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Contentful starter",
+    title: "Simon Fish",
+    colors: {
+      primary: "#066e8a",
+    },
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [
