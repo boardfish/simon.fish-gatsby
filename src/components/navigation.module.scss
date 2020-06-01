@@ -1,44 +1,6 @@
 @import "./base.scss";
 @import "node_modules/bootstrap/scss/_navbar";
 
-.navigation {
-  @extend .flex-md-column;
-  background-color: theme-color-level(primary, 2);
-  flex-grow: 1;
-  grid-column-start: 0;
-  @include media-breakpoint-down(sm) {
-    position: fixed;
-    width: 100vw;
-  }
-}
-
-.navContent {
-  @extend .flex-md-column;
-}
-
-.navbarBrand {
-  @extend .navbar-brand;
-  color: theme-color("light");
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 0.4rem;
-  font-size: 2rem;
-}
-
-@include media-breakpoint-up(md) {
-  .navLinkWrapper {
-    margin-bottom: 2rem;
-  }
-}
-
-.navLink {
-  @extend .nav-link;
-  color: theme-color("light");
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
 .navbarTogglerIcon span {
-  // @extend .navbar-toggler;
   background-image: escape-svg($navbar-dark-toggler-icon-bg);
 }

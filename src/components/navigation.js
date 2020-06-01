@@ -26,21 +26,60 @@ export default ({ data, color }) => {
         },
       })}
     >
-      <Link to="/" className={styles.navbarBrand}>
+      <Link
+        to="/"
+        className={css({
+          color: "white",
+          textTransform: "uppercase",
+          fontWeight: "bold",
+          letterSpacing: "0.4rem",
+          fontSize: "2rem",
+        })}
+      >
         {data.name}
       </Link>
       <NavbarToggler onClick={toggle} className={styles.navbarTogglerIcon} />
       <Collapse isOpen={isOpen} navbar>
-        <Nav navbar className={styles.navContent}>
-          <NavItem className={styles.navLinkWrapper}>
-            <Link to="/blog" className={styles.navLink}>
+        <Nav
+          navbar
+          className={css({
+            "@media (min-width: 768px)": {
+              flexDirection: "column !important",
+            },
+          })}
+        >
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <Link
+              to="/blog"
+              className={
+                "nav-link " +
+                css({
+                  color: "#fff",
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
               Blog
             </Link>
           </NavItem>
           <NavItem>
             <a
               href={`https://github.com/${data.github}`}
-              className={styles.navLink}
+              className={
+                "nav-link " +
+                css({
+                  color: "#fff",
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
             >
               GitHub
             </a>
