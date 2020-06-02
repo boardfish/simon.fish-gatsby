@@ -1,6 +1,3 @@
 @import "./base.scss";
 @import "node_modules/bootstrap/scss/_navbar";
 
-.navbarTogglerIcon span {
-  background-image: escape-svg($navbar-dark-toggler-icon-bg);
-}

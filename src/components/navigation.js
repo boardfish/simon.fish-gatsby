@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
-import styles from "./navigation.module.scss";
 import { useStyletron } from "styletron-react";
 import tinycolor from "tinycolor2";
 
@@ -17,12 +16,12 @@ export default ({ data, color }) => {
         backgroundColor: tinycolor(color).darken(3).toString(),
         position: "fixed",
         width: "100vw",
-        flexDirection: "column",
         flexGrow: 1,
         gridColumnStart: 0,
         "@media (min-width: 768px)": {
           position: "static",
           width: "auto",
+          flexDirection: "column !important",
         },
       })}
     >
@@ -38,7 +37,7 @@ export default ({ data, color }) => {
       >
         {data.name}
       </Link>
-      <NavbarToggler onClick={toggle} className={styles.navbarTogglerIcon} />
+      <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav
           navbar

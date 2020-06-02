@@ -5,7 +5,4 @@
   @extend .bg-primary;
   height: 100vh;
   overflow-y: auto;
-  @include media-breakpoint-down(sm) {
-    margin-top: 74px;
-  }
 }
