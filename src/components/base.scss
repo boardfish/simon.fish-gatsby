@@ -16,3 +16,30 @@ span.navbar-toggler-icon {
     color: color-yiq($primary);
   }
 }
+
+.card {
+  @extend .bg-dark;
+  .card-title {
+    @extend .h3;
+    color: white;
+  }
+}
+
+.card-deck {
+  @extend .mx-0;
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-auto-columns: 50%;
+  grid-gap: 1em;
+  .card {
+    @extend .mx-0;
+  }
+}
+
+// Delegate container padding to children so we can have full width 
+.container-fluid {
+  padding: 0;
+  > * {
+    padding: 0 $spacer;
+  }
+}

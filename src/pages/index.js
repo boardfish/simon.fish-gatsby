@@ -5,35 +5,38 @@ import Helmet from "react-helmet";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
 import ArticlePreview from "../components/article-preview";
+import tinycolor from "tinycolor2";
+import { useStyletron } from "styletron-react";
+import useSiteMetadata from "../hooks/use-site-metadata";
 
-class RootIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, "props.data.site.siteMetadata.title");
-    const posts = get(this, "props.data.allContentfulBlogPost.edges");
-    const [author] = get(this, "props.data.allContentfulPerson.edges");
+export default (props) => {
+  const siteTitle = get(props, "data.site.siteMetadata.title");
+  const posts = get(props, "data.allContentfulBlogPost.edges");
+  const [author] = get(props, "data.allContentfulPerson.edges");
+  const [css] = useStyletron();
+  const colors = useSiteMetadata("colors");
 
-    return (
-      <Layout location={this.props.location}>
-        <Helmet title={siteTitle} />
-        <Hero data={author.node} />
-        <div className="wrapper">
-          <h2 className="section-headline">Recent articles</h2>
-          <ul className="article-list">
-            {posts.map(({ node }) => {
-              return (
-                <li key={node.slug}>
-                  <ArticlePreview article={node} />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </Layout>
-    );
-  }
-}
-
-export default RootIndex;
+  return (
+    <Layout location={props.location}>
+      <Helmet title={siteTitle} />
+      <Hero data={author.node} />
+      <section
+        id="blog"
+        className={css({
+          backgroundColor: tinycolor(colors.primary).darken(4).toString(),
+          height: "100%",
+        })}
+      >
+        <h2 className="section-headline">Recent articles</h2>
+        <ul className="article-list card-deck list-unstyled">
+          {posts.map(({ node }) => {
+            return <ArticlePreview article={node} key={node.slug} />;
+          })}
+        </ul>
+      </section>
+    </Layout>
+  );
+};
 
 export const pageQuery = graphql`
   query HomeQuery {
