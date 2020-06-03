@@ -21,13 +21,61 @@ export default (props) => {
       <Helmet title={siteTitle} />
       <Hero data={author.node} />
       <section
-        id="blog"
+        id="about"
         className={css({
           backgroundColor: tinycolor(colors.primary).darken(4).toString(),
           height: "100%",
+          paddingTop: "3em",
         })}
       >
-        <h2 className="section-headline">Recent articles</h2>
+        <h2
+          className={css({
+            fontWeight: "bold",
+            gridColumn: 1,
+            fontSize: "2rem",
+            "@media (min-width: 768px)": {
+              fontSize: "4rem",
+            },
+          })}
+        >
+          Hi, I'm Simon.
+        </h2>
+        <p>
+          I'm a <b>software engineer</b> with a{" "}
+          <b>year of industry experience</b> and a{" "}
+          <b>Computer Science degree</b>.
+        </p>
+        <p>I'm motivated to:</p>
+        <ul>
+          <li>
+            support <b>free and open source software</b>
+          </li>
+          <li>
+            <b>learn</b> new things, and use those findings to{" "}
+            <b>teach and empower others</b>
+          </li>
+          <li>
+            make a <b>positive difference to the world</b> through technology
+          </li>
+        </ul>
+        <p>
+          I'm determined to stick to these principles and use my power as a
+          force for good.
+        </p>
+        <p>
+          Most of my experience lies with <b>Ruby</b> and <b>React.JS</b>, but I
+          have supporting experience in <b>Node.JS</b> and <b>Python</b>. I'm a
+          fast learner, so I'm equally ready to learn new tools.
+        </p>
+      </section>
+      <section
+        id="blog"
+        className={css({
+          backgroundColor: tinycolor(colors.primary).darken(5).toString(),
+          height: "100%",
+        })}
+      >
+        <h2 className="section-headline">My posts</h2>
         <ul className="article-list card-deck list-unstyled">
           {posts.map(({ node }) => {
             return <ArticlePreview article={node} key={node.slug} />;
