@@ -1,8 +1,0 @@
-@import "./base.scss";
-
-.container {
-  @extend .flex-column;
-  @extend .bg-primary;
-  height: 100vh;
-  overflow-y: auto;
-}
