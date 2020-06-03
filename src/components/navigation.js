@@ -14,14 +14,13 @@ export default ({ data, color }) => {
       expand="md"
       className={css({
         backgroundColor: tinycolor(color).darken(3).toString(),
-        position: "fixed",
-        width: "100vw",
         flexGrow: 1,
         gridColumnStart: 0,
         "@media (min-width: 768px)": {
-          position: "static",
+          position: "sticky",
           width: "auto",
           flexDirection: "column !important",
+          height: "100vh",
         },
       })}
     >

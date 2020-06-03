@@ -4,23 +4,24 @@ import { graphql } from "gatsby";
 import usePortfolioImages from "../hooks/use-portfolio-images";
 import { useStyletron } from "styletron-react";
 
-export default ({ data }) => {
+export default ({ data, id = "hero" }) => {
   const images = usePortfolioImages();
   const [css] = useStyletron();
   return (
-    <div
+    <section
+      id={id}
       className={css({
-        minHeight: "100vh",
         "@media (min-width: 768px)": {
           display: "grid",
-          gridTemplateColumns: "66% auto",
+          gridTemplateColumns: "75% auto",
           alignItems: "center",
+          height: "100vh",
         },
       })}
     >
       <div
         className={css({
-          minHeight: "86vh",
+          height: "100vh",
           width: "100%",
           display: "flex",
           flexDirection: "column",
@@ -74,7 +75,15 @@ export default ({ data }) => {
           , and more.
         </p>
       </div>
-      <div>
+      <div
+        className={css({
+          height: "inherit",
+          overflowY: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        })}
+      >
         {images.slice(0, 3).map((image) => (
           <Img
             fluid={image.fluid}
@@ -102,7 +111,7 @@ export default ({ data }) => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
