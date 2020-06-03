@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import get from "lodash/get";
 import Helmet from "react-helmet";
 import Hero from "../components/hero";
@@ -26,47 +27,23 @@ export default (props) => {
           backgroundColor: tinycolor(colors.primary).darken(4).toString(),
           height: "100%",
           paddingTop: "3em",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          "@media (min-width: 768px)": {
+            display: "grid",
+            gridTemplateColumns: "35% auto",
+            gridGap: "1em",
+          },
         })}
       >
-        <h2
-          className={css({
-            fontWeight: "bold",
-            gridColumn: 1,
-            fontSize: "2rem",
-            "@media (min-width: 768px)": {
-              fontSize: "4rem",
-            },
-          })}
-        >
-          Hi, I'm Simon.
-        </h2>
-        <p>
-          I'm a <b>software engineer</b> with a{" "}
-          <b>year of industry experience</b> and a{" "}
-          <b>Computer Science degree</b>.
-        </p>
-        <p>I'm motivated to:</p>
-        <ul>
-          <li>
-            support <b>free and open source software</b>
-          </li>
-          <li>
-            <b>learn</b> new things, and use those findings to{" "}
-            <b>teach and empower others</b>
-          </li>
-          <li>
-            make a <b>positive difference to the world</b> through technology
-          </li>
-        </ul>
-        <p>
-          I'm determined to stick to these principles and use my power as a
-          force for good.
-        </p>
-        <p>
-          Most of my experience lies with <b>Ruby</b> and <b>React.JS</b>, but I
-          have supporting experience in <b>Node.JS</b> and <b>Python</b>. I'm a
-          fast learner, so I'm equally ready to learn new tools.
-        </p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: author.node.longBio.childMarkdownRemark.html,
+          }}
+        ></div>
+        <Img fixed={author.node.heroImage.fixed} />
       </section>
       <section
         id="blog"
@@ -114,18 +91,25 @@ export const pageQuery = graphql`
       edges {
         node {
           name
+          tagline {
+            childMarkdownRemark {
+              html
+            }
+          }
           shortBio {
-            shortBio
+            childMarkdownRemark {
+              html
+            }
+          }
+          longBio {
+            childMarkdownRemark {
+              html
+            }
           }
           title
           heroImage: image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid_tracedSVG
+            fixed(width: 400, height: 400) {
+              ...GatsbyContentfulFixed_tracedSVG
             }
           }
         }

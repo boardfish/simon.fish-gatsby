@@ -32,48 +32,17 @@ export default ({ data, id = "hero" }) => {
           },
         })}
       >
-        <h1
-          className={css({
-            fontWeight: "bold",
-            gridColumn: 1,
-            fontSize: "3rem",
-            "@media (min-width: 768px)": {
-              fontSize: "5rem",
-            },
-          })}
-        >
-          {data.shortBio.shortBio}
-        </h1>
-        <p className="lead">
-          University of Sheffield Computer Science graduate with a{" "}
-          <span
-            className={css({
-              borderBottom: ".2rem solid #047",
-              padding: ".1rem 0",
-            })}
-          >
-            year of industry experience
-          </span>
-          . Experienced with{" "}
-          <span
-            className={css({
-              borderBottom: ".2rem solid red",
-              padding: ".1rem 0",
-            })}
-          >
-            Ruby
-          </span>
-          ,{" "}
-          <span
-            className={css({
-              borderBottom: ".2rem solid aqua",
-              padding: ".1rem 0",
-            })}
-          >
-            React
-          </span>
-          , and more.
-        </p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data.tagline.childMarkdownRemark.html,
+          }}
+        ></div>
+        <div
+          className="lead"
+          dangerouslySetInnerHTML={{
+            __html: data.shortBio.childMarkdownRemark.html,
+          }}
+        ></div>
       </div>
       <div
         className={css({
