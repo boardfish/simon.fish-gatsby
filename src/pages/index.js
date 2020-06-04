@@ -67,19 +67,23 @@ export default (props) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            display: "grid",
+            gridGap: "1em",
+            gridTemplateColumns: "auto",
+            gridTemplateRows: "auto",
             "@media (min-width: 768px)": {
-              display: "grid",
               gridTemplateColumns: "33% 33% auto",
               gridTemplateRows: "auto auto auto",
-              gridGap: "1em",
             },
           })}
         >
           {testimonials.map((testimonial, index) => (
             <Card
               className={css({
-                gridRow: index + 1,
-                gridColumn: `${index % 2 === 0 ? 1 : 2} / span 2`,
+                "@media (min-width: 768px)": {
+                  gridRow: index + 1,
+                  gridColumn: `${index % 2 === 0 ? 1 : 2} / span 2`,
+                },
               })}
             >
               <CardBody>
