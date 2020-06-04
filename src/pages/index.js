@@ -63,8 +63,6 @@ export default (props) => {
         <div
           className={css({
             flexGrow: 1,
-            display: "flex",
-            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             display: "grid",
@@ -78,13 +76,21 @@ export default (props) => {
           })}
         >
           {testimonials.map((testimonial, index) => (
-            <Card
-              className={css({
+            <a
+              className={`card ${css({
+                color: "white",
                 "@media (min-width: 768px)": {
                   gridRow: index + 1,
                   gridColumn: `${index % 2 === 0 ? 1 : 2} / span 2`,
                 },
-              })}
+              })}`}
+              href={
+                testimonial.node.attachment
+                  ? testimonial.node.attachment.file.url
+                  : testimonial.node.link
+              }
+              target="blank"
+              rel="noopener"
             >
               <CardBody>
                 <div
@@ -98,7 +104,7 @@ export default (props) => {
                   </small>
                 </div>
               </CardBody>
-            </Card>
+            </a>
           ))}
         </div>
       </section>
