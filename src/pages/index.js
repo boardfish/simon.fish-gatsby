@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import get from "lodash/get";
@@ -79,7 +79,7 @@ export default (props) => {
             <Card
               className={css({
                 gridRow: index + 1,
-                gridColumn: `${index % 2 == 0 ? 1 : 2} / span 2`,
+                gridColumn: `${index % 2 === 0 ? 1 : 2} / span 2`,
               })}
             >
               <CardBody>
