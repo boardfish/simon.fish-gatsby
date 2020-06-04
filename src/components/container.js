@@ -21,6 +21,12 @@ const useHookWithRefCallback = () => {
           case 34:
             ref.current.scrollBy(0, window.innerHeight);
             break;
+          case 35:
+            ref.current.scrollTo(0, ref.current.scrollHeight);
+            break;
+          case 36:
+            ref.current.scrollTo(0, 0);
+            break;
           case 38:
             ref.current.scrollBy(0, -0.33 * window.innerHeight);
             break;
