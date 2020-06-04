@@ -75,6 +75,27 @@ export default ({ data, color }) => {
             })}
           >
             <Link
+              to="#testimonials"
+              className={
+                "nav-link " +
+                css({
+                  color: "#fff",
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
+              Testimonials
+            </Link>
+          </NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <Link
               to="#blog"
               className={
                 "nav-link " +

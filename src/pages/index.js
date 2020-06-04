@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import get from "lodash/get";
@@ -9,11 +9,13 @@ import ArticlePreview from "../components/article-preview";
 import tinycolor from "tinycolor2";
 import { useStyletron } from "styletron-react";
 import useSiteMetadata from "../hooks/use-site-metadata";
+import { Card, CardBody } from "reactstrap";
 
 export default (props) => {
   const siteTitle = get(props, "data.site.siteMetadata.title");
   const posts = get(props, "data.allContentfulBlogPost.edges");
   const [author] = get(props, "data.allContentfulPerson.edges");
+  const testimonials = get(props, "data.allContentfulTestimonial.edges");
   const [css] = useStyletron();
   const colors = useSiteMetadata("colors");
 
@@ -25,7 +27,7 @@ export default (props) => {
         id="about"
         className={css({
           backgroundColor: tinycolor(colors.primary).darken(4).toString(),
-          height: "100%",
+          minHeight: "100%",
           paddingTop: "3em",
           display: "flex",
           flexDirection: "column",
@@ -33,7 +35,7 @@ export default (props) => {
           alignItems: "center",
           "@media (min-width: 768px)": {
             display: "grid",
-            gridTemplateColumns: "35% auto",
+            gridTemplateColumns: "auto auto",
             gridGap: "1em",
           },
         })}
@@ -46,10 +48,61 @@ export default (props) => {
         <Img fixed={author.node.heroImage.fixed} />
       </section>
       <section
-        id="blog"
+        id="testimonials"
         className={css({
           backgroundColor: tinycolor(colors.primary).darken(5).toString(),
-          height: "100%",
+          minHeight: "100%",
+          paddingTop: "1em",
+          paddingBottom: "1em",
+          display: "flex",
+          flexDirection: "column",
+        })}
+      >
+        <h2>Testimonials</h2>
+        <p className="lead">Here's what folks I've worked with have to say.</p>
+        <div
+          className={css({
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            "@media (min-width: 768px)": {
+              display: "grid",
+              gridTemplateColumns: "33% 33% auto",
+              gridTemplateRows: "auto auto auto",
+              gridGap: "1em",
+            },
+          })}
+        >
+          {testimonials.map((testimonial, index) => (
+            <Card
+              className={css({
+                gridRow: index + 1,
+                gridColumn: `${index % 2 == 0 ? 1 : 2} / span 2`,
+              })}
+            >
+              <CardBody>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: testimonial.node.text.childMarkdownRemark.html,
+                  }}
+                ></div>
+                <div>
+                  <small>
+                    {testimonial.node.author}, {testimonial.node.authorRole}
+                  </small>
+                </div>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+      </section>
+      <section
+        id="blog"
+        className={css({
+          backgroundColor: tinycolor(colors.primary).darken(6).toString(),
+          minHeight: "100%",
         })}
       >
         <h2 className="section-headline">My posts</h2>
@@ -110,6 +163,25 @@ export const pageQuery = graphql`
           heroImage: image {
             fixed(width: 400, height: 400) {
               ...GatsbyContentfulFixed_tracedSVG
+            }
+          }
+        }
+      }
+    }
+    allContentfulTestimonial {
+      edges {
+        node {
+          author
+          authorRole
+          link
+          text {
+            childMarkdownRemark {
+              html
+            }
+          }
+          attachment {
+            file {
+              url
             }
           }
         }
