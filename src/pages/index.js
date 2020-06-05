@@ -16,6 +16,16 @@ export default (props) => {
   const posts = get(props, "data.allContentfulBlogPost.edges");
   const [author] = get(props, "data.allContentfulPerson.edges");
   const testimonials = get(props, "data.allContentfulTestimonial.edges");
+  const groupBy = function (xs, key) {
+    return xs.reduce(function (rv, x) {
+      (rv[get(x, key)] = rv[get(x, key)] || []).push(x);
+      return rv;
+    }, {});
+  };
+  const portfolio = groupBy(
+    get(props, "data.allContentfulPortfolioItem.edges"),
+    "node.category"
+  );
   const [css] = useStyletron();
   const colors = useSiteMetadata("colors");
 
@@ -115,6 +125,82 @@ export default (props) => {
         </div>
       </section>
       <section
+        id="portfolio"
+        className={css({
+          backgroundColor: tinycolor(colors.primary).darken(6).toString(),
+          minHeight: "100%",
+          display: "grid",
+          gridGap: "1em",
+          paddingTop: "1em",
+          paddingBottom: "1em",
+          gridTemplateColumns: "auto",
+          "@media (min-width: 768px": {
+            gridTemplateColumns: "33% 33% auto",
+          },
+        })}
+      >
+        <div
+          className={`${css({
+            "@media (min-width: 768px": {
+              gridColumn: "1 / span 3",
+            },
+          })}`}
+        >
+          <h2 className={`section-headline`}>Portfolio</h2>
+          <p className="lead">
+            Here are some examples of what I've been up to.
+          </p>
+        </div>
+        {Object.entries(portfolio).map(([category, items]) => (
+          <div className={`card`}>
+            <h4 className="card-header">{category}</h4>
+            <ul
+              className={`list-group list-group-flush ${css({
+                color: "black",
+                display: "flex",
+                flexDirection: "column",
+                flexGrow: 1,
+              })}`}
+            >
+              {items.map((item) => (
+                <li
+                  className={`list-group-item ${css({
+                    flexGrow: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    transition: ".2s transform",
+                    ":hover": {
+                      backgroundColor: "#ccc",
+                      transform: "translateX(.5em)",
+                    },
+                  })}`}
+                >
+                  <div
+                    className={css({
+                      display: "flex",
+                      width: "100%",
+                      alignItems: "center",
+                      marginBottom: ".5em",
+                    })}
+                  >
+                    <h5 className={css({ marginBottom: 0 })}>
+                      {item.node.title}
+                    </h5>
+                    <small className={css({ marginLeft: "auto" })}>
+                      {item.node.date}
+                    </small>
+                  </div>
+                  <p className={css({ marginBottom: 0 })}>
+                    {item.node.summary}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+      <section
         id="blog"
         className={css({
           backgroundColor: tinycolor(colors.primary).darken(6).toString(),
@@ -198,6 +284,24 @@ export const pageQuery = graphql`
           attachment {
             file {
               url
+            }
+          }
+        }
+      }
+    }
+    allContentfulPortfolioItem(sort: { fields: [endDate, date], order: DESC }) {
+      edges {
+        node {
+          date(formatString: "MMM Do, 'YY")
+          endDate(formatString: "MMM Do, 'YY")
+          location
+          projectName
+          summary
+          title
+          category
+          images {
+            fluid {
+              src
             }
           }
         }

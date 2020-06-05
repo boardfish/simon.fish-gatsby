@@ -96,6 +96,27 @@ export default ({ data, color }) => {
             })}
           >
             <Link
+              to="#portfolio"
+              className={
+                "nav-link " +
+                css({
+                  color: "#fff",
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
+              Portfolio
+            </Link>
+          </NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <Link
               to="#blog"
               className={
                 "nav-link " +
