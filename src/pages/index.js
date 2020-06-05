@@ -9,7 +9,8 @@ import ArticlePreview from "../components/article-preview";
 import tinycolor from "tinycolor2";
 import { useStyletron } from "styletron-react";
 import useSiteMetadata from "../hooks/use-site-metadata";
-import { Card, CardBody } from "reactstrap";
+import { CardBody } from "reactstrap";
+import { ReactSVG } from "react-svg";
 
 export default (props) => {
   const siteTitle = get(props, "data.site.siteMetadata.title");
@@ -186,10 +187,40 @@ export default (props) => {
                   >
                     <h5 className={css({ marginBottom: 0 })}>
                       {item.node.title}
+                      <br />
+                      <small className={css({ color: "#777" })}>
+                        {item.node.projectName}
+                      </small>
                     </h5>
                     <small className={css({ marginLeft: "auto" })}>
                       {item.node.date}
                     </small>
+                  </div>
+                  <div
+                    className={css({ display: "flex", alignItems: "center" })}
+                  >
+                    {(item.node.tools || []).map((tool) => (
+                      <ReactSVG
+                        src={tool.icon.file.url}
+                        beforeInjection={(svg) => {
+                          var classes = css({
+                            height: "1.5rem",
+                            width: "auto",
+                            backgroundColor: tool.color,
+                            borderRadius: ".2em",
+                            padding: ".1em .25em",
+                            marginRight: ".25em",
+                            display: "inline",
+                            color: tinycolor(tool.color).isLight()
+                              ? "black"
+                              : "white",
+                          }).split(" ");
+                          console.log(classes);
+                          svg.classList.add(...classes);
+                        }}
+                        wrapper="span"
+                      />
+                    ))}
                   </div>
                   <p className={css({ marginBottom: 0 })}>
                     {item.node.summary}
@@ -303,6 +334,15 @@ export const pageQuery = graphql`
             fluid {
               src
             }
+          }
+          tools {
+            icon {
+              file {
+                url
+              }
+            }
+            color
+            name
           }
         }
       }

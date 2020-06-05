@@ -23,6 +23,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.0",
+    "react-svg": "^11.0.24",
     "reactstrap": "^8.4.1",
     "styletron-engine-atomic": "^1.4.6",
     "styletron-react": "^5.2.7",
