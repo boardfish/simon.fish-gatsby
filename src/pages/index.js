@@ -83,6 +83,12 @@ export default (props) => {
                   gridRow: index + 1,
                   gridColumn: `${index % 2 === 0 ? 1 : 2} / span 2`,
                 },
+                transition: "transform .5s",
+                ":hover": {
+                  color: "white",
+                  textDecoration: "none",
+                  transform: "translateY(-1em)",
+                },
               })}`}
               href={
                 testimonial.node.attachment
