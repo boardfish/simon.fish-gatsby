@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import get from "lodash/get";
 import Helmet from "react-helmet";
@@ -183,8 +183,13 @@ export default (props) => {
                     },
                   })}`}
                 >
-                  <div
+                  <Link
+                    to={`/portfolio/${item.node.id}`}
                     className={css({
+                      color: '#222',
+                      ":hover": {
+                        textDecoration: 'none'
+                      },
                       display: "flex",
                       width: "100%",
                       flexDirection: "column",
@@ -209,7 +214,7 @@ export default (props) => {
                     <small className={css({ marginLeft: "auto" })}>
                       {item.node.date}
                     </small>
-                  </div>
+                  </Link>
                   <div
                     className={css({ display: "flex", alignItems: "center" })}
                   >
@@ -335,6 +340,7 @@ export const pageQuery = graphql`
     allContentfulPortfolioItem(sort: { fields: [endDate, date], order: DESC }) {
       edges {
         node {
+          id
           date(formatString: "MMM Do, 'YY")
           endDate(formatString: "MMM Do, 'YY")
           location
