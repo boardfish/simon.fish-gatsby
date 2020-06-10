@@ -136,6 +136,9 @@ export default (props) => {
           paddingBottom: "1em",
           gridTemplateColumns: "auto",
           "@media (min-width: 768px": {
+            gridTemplateColumns: "50% 50%",
+          },
+          "@media (min-width: 992px": {
             gridTemplateColumns: "33% 33% auto",
           },
         })}
@@ -143,6 +146,9 @@ export default (props) => {
         <div
           className={`${css({
             "@media (min-width: 768px": {
+              gridColumn: "1 / span 2",
+            },
+            "@media (min-width: 992px": {
               gridColumn: "1 / span 3",
             },
           })}`}
@@ -181,11 +187,19 @@ export default (props) => {
                     className={css({
                       display: "flex",
                       width: "100%",
-                      alignItems: "center",
+                      flexDirection: "column",
+                      justifyContent: "center",
                       marginBottom: ".5em",
+                      "@media (min-width: 992px": {
+                        flexDirection: "row",
+                        alignItems: "center",
+                      },
                     })}
                   >
-                    <h5 className={css({ marginBottom: 0 })}>
+                    <h5 className={css({
+                      marginBottom: 0,
+                      flexBasis: '75%'
+                      })}>
                       {item.node.title}
                       <br />
                       <small className={css({ color: "#777" })}>
