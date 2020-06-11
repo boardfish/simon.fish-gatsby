@@ -220,6 +220,7 @@ export default (props) => {
                   >
                     {(item.node.tools || []).map((tool) => (
                       <ReactSVG
+                        className={css({ display: 'block' })}
                         src={tool.icon.file.url}
                         beforeInjection={(svg) => {
                           var classes = css({

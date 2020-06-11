@@ -4,6 +4,9 @@ import Helmet from "react-helmet";
 import get from "lodash/get";
 import Layout from "../components/layout";
 import { useStyletron } from "styletron-react";
+import { mapToCssModules } from "reactstrap/lib/utils";
+import { ReactSVG } from "react-svg";
+import tinycolor from "tinycolor2";
 
 export default (props) => {
   const [css] = useStyletron();
@@ -22,15 +25,36 @@ export default (props) => {
         })}
       >
         <h1 className="section-headline">{item.title}</h1>
-        <p
-          style={{
-            display: "block",
-          }}
-        >
+        <p>
           {item.date}
           {item.year === item.endYear ? '' : ` ${item.year}`}
           {item.endDate ? `-${item.endDate} ` : ' '}
           {item.endYear}
+        </p>
+        <p className={css({ display: 'flex'})}>
+          {(item.tools || []).map(tool => (
+                      <ReactSVG
+                        className={css({ display: 'block' })}
+                        src={tool.icon.file.url}
+                        beforeInjection={(svg) => {
+                          var classes = css({
+                            height: "1.5rem",
+                            width: "auto",
+                            backgroundColor: tool.color,
+                            borderRadius: ".2em",
+                            padding: ".1em .25em",
+                            marginRight: ".25em",
+                            display: "inline",
+                            color: tinycolor(tool.color).isLight()
+                              ? "black"
+                              : "white",
+                          }).split(" ");
+                          console.log(classes);
+                          svg.classList.add(...classes);
+                        }}
+                        wrapper="span"
+                      />
+          ))}
         </p>
         <div
           dangerouslySetInnerHTML={{
