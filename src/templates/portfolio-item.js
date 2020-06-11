@@ -27,7 +27,10 @@ export default (props) => {
             display: "block",
           }}
         >
-          {item.publishDate}
+          {item.date}
+          {item.year === item.endYear ? '' : ` ${item.year}`}
+          {item.endDate ? `-${item.endDate} ` : ' '}
+          {item.endYear}
         </p>
         <div
           dangerouslySetInnerHTML={{
@@ -43,6 +46,10 @@ export const pageQuery = graphql`
   query PortfolioItemById($id: String!) {
     contentfulPortfolioItem(id: { eq: $id }) {
       title
+      date(formatString: "Do MMMM")
+      endDate(formatString: "Do MMMM")
+      year: date(formatString: "'YY")
+      endYear: endDate(formatString: "'YY")
       images {
         fluid {
           ...GatsbyContentfulFluid_tracedSVG
@@ -52,6 +59,15 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      tools {
+        icon {
+          file {
+            url
+          }
+        }
+        color
+        name
       }
     }
     site {
