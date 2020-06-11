@@ -1,5 +1,4 @@
 import React, { useCallback, useRef } from "react";
-import { Container } from "reactstrap";
 import { useStyletron } from "styletron-react";
 import useSiteMetadata from "../hooks/use-site-metadata";
 
@@ -32,6 +31,8 @@ const useHookWithRefCallback = () => {
             break;
           case 40:
             ref.current.scrollBy(0, 0.33 * window.innerHeight);
+            break;
+          default:
             break;
         }
       });

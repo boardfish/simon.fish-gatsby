@@ -24,7 +24,7 @@ export default ({ article }) => {
                 color: "#ddd",
               })}
             >
-              // {article.publishDate}
+              {`//${article.publishDate}`}
             </span>
           </Link>
         </CardTitle>
