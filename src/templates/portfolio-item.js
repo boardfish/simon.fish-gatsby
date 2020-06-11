@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import Helmet from "react-helmet";
 import get from "lodash/get";
 import Layout from "../components/layout";
 import { useStyletron } from "styletron-react";
-import { mapToCssModules } from "reactstrap/lib/utils";
 import { ReactSVG } from "react-svg";
 import tinycolor from "tinycolor2";
 
@@ -25,6 +25,11 @@ export default (props) => {
         })}
       >
         <h1 className="section-headline">{item.title}</h1>
+        {(item.images || []).map(image => (
+          <div className={css({ height: '40vh' })}>
+            <Img fluid={image.fluid} imgStyle={{ objectFit: "contain" }} className={css({ height: '100%'})} />
+          </div>
+        ))}
         <p>
           {item.date}
           {item.year === item.endYear ? '' : ` ${item.year}`}
@@ -75,8 +80,8 @@ export const pageQuery = graphql`
       year: date(formatString: "'YY")
       endYear: endDate(formatString: "'YY")
       images {
-        fluid {
-          ...GatsbyContentfulFluid_tracedSVG
+        fluid(maxHeight: 500) {
+          ...GatsbyContentfulFluid
         }
       }
       description {
