@@ -40,7 +40,7 @@ export default (props) => {
           {item.endDate ? `-${item.endDate} ` : " "}
           {item.endYear}
         </p>
-        <p className={css({ display: "flex" })}>
+        <p className={css({ display: "flex", overflowY: "auto" })}>
           {(item.tools || []).map((tool) => {
             if (tool.icon) {
               return (
@@ -80,6 +80,7 @@ export default (props) => {
                     color: tinycolor(tool.color || "#ddd").isLight()
                       ? "black"
                       : "white",
+                    whiteSpace: 'nowrap'
                   })}
                 >
                   {tool.name}

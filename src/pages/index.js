@@ -218,7 +218,7 @@ export default (props) => {
                     </small>
                   </Link>
                   <div
-                    className={css({ display: "flex", alignItems: "center" })}
+                    className={css({ display: "flex", alignItems: "center", overflowY: "auto" })}
                   >
                     {(item.node.tools || []).map((tool) => {
                       if (tool.icon) {
@@ -259,6 +259,7 @@ export default (props) => {
                               color: tinycolor(tool.color || "#ddd").isLight()
                                 ? "black"
                                 : "white",
+                    whiteSpace: 'nowrap'
                             })}
                           >
                             {tool.name}
