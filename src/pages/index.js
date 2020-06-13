@@ -218,54 +218,24 @@ export default (props) => {
                     </small>
                   </Link>
                   <div
-                    className={css({ display: "flex", alignItems: "center", overflowY: "auto" })}
+                    className={css({
+                      display: "flex",
+                      alignItems: "center",
+                      overflowY: "auto",
+                      borderRadius: "1em",
+                    })}
                   >
                     {(item.node.tools || []).map((tool) => {
-                      if (tool.icon) {
-                        return (
-                          <ReactSVG
-                            className={css({ display: "block" })}
-                            src={tool.icon.file.url}
-                            beforeInjection={(svg) => {
-                              var classes = css({
-                                height: "1.5rem",
-                                width: "auto",
-                                backgroundColor: tool.color,
-                                borderRadius: ".2em",
-                                padding: ".1em .25em",
-                                marginRight: ".25em",
-                                display: "inline",
-                                color: tinycolor(tool.color).isLight()
-                                  ? "black"
-                                  : "white",
-                              }).split(" ");
-                              console.log(classes);
-                              svg.classList.add(...classes);
-                            }}
-                            wrapper="span"
-                          />
-                        );
-                      } else {
-                        return (
-                          <span
-                            className={css({
-                              height: "1.5rem",
-                              width: "auto",
-                              backgroundColor: tool.color || "#ddd",
-                              borderRadius: ".2em",
-                              padding: ".1em .25em",
-                              marginRight: ".25em",
-                              display: "inline",
-                              color: tinycolor(tool.color || "#ddd").isLight()
-                                ? "black"
-                                : "white",
-                    whiteSpace: 'nowrap'
-                            })}
-                          >
-                            {tool.name}
-                          </span>
-                        );
-                      }
+                      return (
+                        <hr
+                          className={css({
+                            flexBasis: "2em",
+                            height: ".5em",
+                            backgroundColor: tool.color || "#ddd",
+                            margin: 0,
+                          })}
+                        />
+                      );
                     })}
                   </div>
                   <p className={css({ marginBottom: 0 })}>
