@@ -25,41 +25,68 @@ export default (props) => {
         })}
       >
         <h1 className="section-headline">{item.title}</h1>
-        {(item.images || []).map(image => (
-          <div className={css({ height: '40vh' })}>
-            <Img fluid={image.fluid} imgStyle={{ objectFit: "contain" }} className={css({ height: '100%'})} />
+        {(item.images || []).map((image) => (
+          <div className={css({ height: "40vh" })}>
+            <Img
+              fluid={image.fluid}
+              imgStyle={{ objectFit: "contain" }}
+              className={css({ height: "100%" })}
+            />
           </div>
         ))}
         <p>
           {item.date}
-          {item.year === item.endYear ? '' : ` ${item.year}`}
-          {item.endDate ? `-${item.endDate} ` : ' '}
+          {item.year === item.endYear ? "" : ` ${item.year}`}
+          {item.endDate ? `-${item.endDate} ` : " "}
           {item.endYear}
         </p>
-        <p className={css({ display: 'flex'})}>
-          {(item.tools || []).map(tool => (
-                      <ReactSVG
-                        className={css({ display: 'block' })}
-                        src={tool.icon.file.url}
-                        beforeInjection={(svg) => {
-                          var classes = css({
-                            height: "1.5rem",
-                            width: "auto",
-                            backgroundColor: tool.color,
-                            borderRadius: ".2em",
-                            padding: ".1em .25em",
-                            marginRight: ".25em",
-                            display: "inline",
-                            color: tinycolor(tool.color).isLight()
-                              ? "black"
-                              : "white",
-                          }).split(" ");
-                          console.log(classes);
-                          svg.classList.add(...classes);
-                        }}
-                        wrapper="span"
-                      />
-          ))}
+        <p className={css({ display: "flex" })}>
+          {(item.tools || []).map((tool) => {
+            if (tool.icon) {
+              return (
+                <ReactSVG
+                  className={css({ display: "block" })}
+                  src={tool.icon.file.url}
+                  beforeInjection={(svg) => {
+                    var classes = css({
+                      height: "1.5rem",
+                      width: "auto",
+                      backgroundColor: tool.color,
+                      borderRadius: ".2em",
+                      padding: ".1em .25em",
+                      marginRight: ".25em",
+                      display: "inline",
+                      color: tinycolor(tool.color).isLight()
+                        ? "black"
+                        : "white",
+                    }).split(" ");
+                    console.log(classes);
+                    svg.classList.add(...classes);
+                  }}
+                  wrapper="span"
+                />
+              );
+            } else {
+              return (
+                <span
+                  className={css({
+                    height: "1.5rem",
+                    width: "auto",
+                    backgroundColor: tool.color || "#ddd",
+                    borderRadius: ".2em",
+                    padding: ".1em .25em",
+                    marginRight: ".25em",
+                    display: "inline",
+                    color: tinycolor(tool.color || "#ddd").isLight()
+                      ? "black"
+                      : "white",
+                  })}
+                >
+                  {tool.name}
+                </span>
+              );
+            }
+          })}
         </p>
         <div
           dangerouslySetInnerHTML={{

@@ -186,9 +186,9 @@ export default (props) => {
                   <Link
                     to={`/portfolio/${item.node.id}`}
                     className={css({
-                      color: '#222',
+                      color: "#222",
                       ":hover": {
-                        textDecoration: 'none'
+                        textDecoration: "none",
                       },
                       display: "flex",
                       width: "100%",
@@ -201,10 +201,12 @@ export default (props) => {
                       },
                     })}
                   >
-                    <h5 className={css({
-                      marginBottom: 0,
-                      flexBasis: '75%'
-                      })}>
+                    <h5
+                      className={css({
+                        marginBottom: 0,
+                        flexBasis: "75%",
+                      })}
+                    >
                       {item.node.title}
                       <br />
                       <small className={css({ color: "#777" })}>
@@ -218,29 +220,52 @@ export default (props) => {
                   <div
                     className={css({ display: "flex", alignItems: "center" })}
                   >
-                    {(item.node.tools || []).map((tool) => (
-                      <ReactSVG
-                        className={css({ display: 'block' })}
-                        src={tool.icon.file.url}
-                        beforeInjection={(svg) => {
-                          var classes = css({
-                            height: "1.5rem",
-                            width: "auto",
-                            backgroundColor: tool.color,
-                            borderRadius: ".2em",
-                            padding: ".1em .25em",
-                            marginRight: ".25em",
-                            display: "inline",
-                            color: tinycolor(tool.color).isLight()
-                              ? "black"
-                              : "white",
-                          }).split(" ");
-                          console.log(classes);
-                          svg.classList.add(...classes);
-                        }}
-                        wrapper="span"
-                      />
-                    ))}
+                    {(item.node.tools || []).map((tool) => {
+                      if (tool.icon) {
+                        return (
+                          <ReactSVG
+                            className={css({ display: "block" })}
+                            src={tool.icon.file.url}
+                            beforeInjection={(svg) => {
+                              var classes = css({
+                                height: "1.5rem",
+                                width: "auto",
+                                backgroundColor: tool.color,
+                                borderRadius: ".2em",
+                                padding: ".1em .25em",
+                                marginRight: ".25em",
+                                display: "inline",
+                                color: tinycolor(tool.color).isLight()
+                                  ? "black"
+                                  : "white",
+                              }).split(" ");
+                              console.log(classes);
+                              svg.classList.add(...classes);
+                            }}
+                            wrapper="span"
+                          />
+                        );
+                      } else {
+                        return (
+                          <span
+                            className={css({
+                              height: "1.5rem",
+                              width: "auto",
+                              backgroundColor: tool.color || "#ddd",
+                              borderRadius: ".2em",
+                              padding: ".1em .25em",
+                              marginRight: ".25em",
+                              display: "inline",
+                              color: tinycolor(tool.color || "#ddd").isLight()
+                                ? "black"
+                                : "white",
+                            })}
+                          >
+                            {tool.name}
+                          </span>
+                        );
+                      }
+                    })}
                   </div>
                   <p className={css({ marginBottom: 0 })}>
                     {item.node.summary}
