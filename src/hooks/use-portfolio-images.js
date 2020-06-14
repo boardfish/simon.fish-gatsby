@@ -15,8 +15,8 @@ export default () => {
       }
     `
   );
-  return allContentfulPortfolioItem.edges
+  return [].concat(...allContentfulPortfolioItem.edges
     .map(({ node }) => node.images)
     .filter((images) => images)
-    .flat();
+  )
 };
