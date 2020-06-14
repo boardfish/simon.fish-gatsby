@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import get from "lodash/get";
@@ -29,6 +29,7 @@ export default (props) => {
   );
   const [css] = useStyletron();
   const colors = useSiteMetadata("colors");
+  const [techIndicator, setTechIndicator] = useState({ id: null, text: null, timeout: null });
 
   return (
     <Layout location={props.location}>
@@ -220,23 +221,67 @@ export default (props) => {
                   <div
                     className={css({
                       display: "flex",
-                      alignItems: "center",
-                      overflowY: "auto",
-                      borderRadius: "1em",
+                      flexDirection: "column",
                     })}
                   >
-                    {(item.node.tools || []).map((tool) => {
-                      return (
-                        <hr
-                          className={css({
-                            flexBasis: "2em",
-                            height: ".5em",
-                            backgroundColor: tool.color || "#ddd",
-                            margin: 0,
-                          })}
-                        />
-                      );
-                    })}
+                    <p
+                      className={css({
+                        width: "100%",
+                        display:
+                          techIndicator.id === item.node.id ? "block" : "none",
+                        marginBottom: 0,
+                        backgroundColor: techIndicator.color,
+                        color: tinycolor(techIndicator.color).isLight()
+                          ? "#222"
+                          : "#ddd",
+                        transition: ".2s color, .2s background-color",
+                        borderRadius: ".5em .5em 0 0",
+                        textAlign: 'center'
+                      })}
+                    >
+                      {techIndicator.text}
+                    </p>
+                    <div
+                      className={css({
+                        display: "flex",
+                        alignItems: "center",
+                        overflowY: "auto",
+                        width: "100%",
+                        borderRadius: techIndicator.id === item.node.id ? " 0 0 .5em .5em" : 0,
+                      })}
+                    >
+                      {(item.node.tools || []).map((tool) => {
+                        return (
+                          <hr
+                            className={css({
+                              flexBasis: "2em",
+                              height: ".5em",
+                              backgroundColor: tool.color || "#ddd",
+                              margin: 0,
+                              padding:
+                                techIndicator.id === item.node.id
+                                  ? ".5em 0"
+                                  : 0,
+                              transition: ".2s all",
+                            })}
+                            onMouseOver={() => {
+                              clearTimeout(techIndicator.timeout)
+                              setTechIndicator({
+                                id: item.node.id,
+                                text: tool.name,
+                                color: tool.color || "#ddd",
+                              });
+                            }}
+                            onMouseOut={() => {
+                              setTechIndicator(prevState => ({
+                                ...prevState,
+                                timeout: setTimeout(() => setTechIndicator({ id: null, text: null }), 5000)
+                              }))
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
                   </div>
                   <p className={css({ marginBottom: 0 })}>
                     {item.node.summary}

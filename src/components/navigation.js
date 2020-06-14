@@ -130,7 +130,13 @@ export default ({ data, color }) => {
               Blog
             </Link>
           </NavItem>
-          <NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
             <a
               href={`https://github.com/${data.github}`}
               className={
@@ -143,6 +149,27 @@ export default ({ data, color }) => {
               }
             >
               GitHub
+            </a>
+          </NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <a
+              href='https://cv.simon.fish'
+              className={
+                "nav-link " +
+                css({
+                  color: "#fff",
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
+              CV/Resume
             </a>
           </NavItem>
         </Nav>
