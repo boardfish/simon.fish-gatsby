@@ -13,20 +13,27 @@ import { useStyletron } from "styletron-react";
 
     return (
       <Layout location={props.location}>
-        <section id="post" className={css({ paddingTop: '3em' })}>
+        <section id="post" className={css({
+          paddingTop: '3em',
+          minHeight: '100vh',
+          color: '#222',
+          backgroundColor: '#ddd'
+          })}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div>
             <Img alt={post.title} fluid={post.heroImage.fluid} />
           </div>
-          <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
+          <div>
+            <h1 className={css({textAlign: "center"})}>{post.title}</h1>
             <p
               style={{
                 display: "block",
+                textAlign: 'center'
               }}
             >
               {post.publishDate}
             </p>
+            <hr />
             <div
               dangerouslySetInnerHTML={{
                 __html: post.body.childMarkdownRemark.html,

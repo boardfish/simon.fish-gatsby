@@ -295,11 +295,12 @@ export default (props) => {
       <section
         id="blog"
         className={css({
-          backgroundColor: tinycolor(colors.primary).darken(6).toString(),
+          backgroundColor: "#ddd",
           minHeight: "100%",
+          paddingTop: "1em",
         })}
       >
-        <h2 className="section-headline">My posts</h2>
+        <h2 className={css({ color: '#222'})}>Writing</h2>
         <ul className="article-list card-deck list-unstyled">
           {posts.map(({ node }) => {
             return <ArticlePreview article={node} key={node.slug} />;
@@ -320,7 +321,7 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: FILL) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }

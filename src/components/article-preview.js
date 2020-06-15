@@ -9,6 +9,7 @@ export default ({ article }) => {
   return (
     <Card tag={"li"}>
       <Img
+        className='card-img-top'
         alt={article.heroImage.description}
         fluid={article.heroImage.fluid}
       />
