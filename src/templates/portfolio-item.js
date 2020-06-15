@@ -51,14 +51,11 @@ export default (props) => {
                     var classes = css({
                       height: "1.5rem",
                       width: "auto",
-                      backgroundColor: tool.color,
+                      backgroundColor: "white",
                       borderRadius: ".2em",
                       padding: ".1em .25em",
                       marginRight: ".25em",
                       display: "inline",
-                      color: tinycolor(tool.color).isLight()
-                        ? "black"
-                        : "white",
                     }).split(" ");
                     console.log(classes);
                     svg.classList.add(...classes);
@@ -72,12 +69,12 @@ export default (props) => {
                   className={css({
                     height: "1.5rem",
                     width: "auto",
-                    backgroundColor: tool.color || "#ddd",
+                    color: tool.color || "#ddd",
                     borderRadius: ".2em",
                     padding: ".1em .25em",
                     marginRight: ".25em",
                     display: "inline",
-                    color: tinycolor(tool.color || "#ddd").isLight()
+                    backgroundColor: tinycolor(tool.color || "#ddd").isLight()
                       ? "black"
                       : "white",
                     whiteSpace: 'nowrap'
