@@ -300,7 +300,8 @@ export default (props) => {
           paddingTop: "1em",
         })}
       >
-        <h2 className={css({ color: '#222'})}>Writing</h2>
+        <h2 className={css({ color: '#222'})}>Blog</h2>
+        <p className={`lead ${css({ color: '#444'})}`}>Here, I'll be writing about things I've done and learned.</p>
         <ul className="article-list card-deck list-unstyled">
           {posts.map(({ node }) => {
             return <ArticlePreview article={node} key={node.slug} />;
