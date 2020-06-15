@@ -4,15 +4,16 @@ import Helmet from "react-helmet";
 import get from "lodash/get";
 import Img from "gatsby-image";
 import Layout from "../components/layout";
+import { useStyletron } from "styletron-react";
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = get(this.props, "data.contentfulBlogPost");
-    const siteTitle = get(this.props, "data.site.siteMetadata.title");
+  export default (props) => {
+    const post = get(props, "data.contentfulBlogPost");
+    const siteTitle = get(props, "data.site.siteMetadata.title");
+    const [css] = useStyletron()
 
     return (
-      <Layout location={this.props.location}>
-        <div>
+      <Layout location={props.location}>
+        <section id="post" className={css({ paddingTop: '3em' })}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div>
             <Img alt={post.title} fluid={post.heroImage.fluid} />
@@ -32,13 +33,11 @@ class BlogPostTemplate extends React.Component {
               }}
             />
           </div>
-        </div>
+        </section>
       </Layout>
     );
   }
-}
 
-export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -54,6 +53,11 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }
