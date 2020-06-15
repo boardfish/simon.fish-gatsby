@@ -26,7 +26,7 @@ export default ({ data, color }) => {
       })}
     >
       <Link
-        to="/"
+        to="/#hero"
         className={css({
           color: "white",
           textTransform: "uppercase",
