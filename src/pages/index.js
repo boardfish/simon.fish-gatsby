@@ -45,7 +45,7 @@ export default (props) => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          "@media (min-width: 768px)": {
+          "@media (min-width: 992px)": {
             display: "grid",
             gridTemplateColumns: "auto auto",
             gridGap: "1em",
