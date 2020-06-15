@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Helmet from "react-helmet";
 import get from "lodash/get";
 import Img from "gatsby-image";
@@ -39,6 +39,8 @@ import { useStyletron } from "styletron-react";
                 __html: post.body.childMarkdownRemark.html,
               }}
             />
+            <hr />
+            Thanks for reading. Want to head <Link to="/#blog">back to the blog?</Link>
           </div>
         </section>
       </Layout>
