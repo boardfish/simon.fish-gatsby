@@ -16,6 +16,7 @@ export default ({ data, color }) => {
         backgroundColor: tinycolor(color).darken(3).toString(),
         flexGrow: 1,
         gridColumnStart: 0,
+        overflowY: 'auto',
         "@media (min-width: 768px)": {
           position: "sticky",
           width: "auto",
