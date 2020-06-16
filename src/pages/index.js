@@ -13,7 +13,6 @@ import { CardBody } from "reactstrap";
 import { ReactSVG } from "react-svg";
 
 export default (props) => {
-  const siteTitle = get(props, "data.site.siteMetadata.title");
   const posts = get(props, "data.allContentfulBlogPost.edges");
   const [author] = get(props, "data.allContentfulPerson.edges");
   const testimonials = get(props, "data.allContentfulTestimonial.edges");
@@ -28,7 +27,9 @@ export default (props) => {
     "node.category"
   );
   const [css] = useStyletron();
-  const colors = useSiteMetadata("colors");
+  const siteMetadata = useSiteMetadata()
+  const siteTitle = get(siteMetadata, "title");
+  const colors = get(siteMetadata, "colors");
   const [techIndicator, setTechIndicator] = useState({ id: null, text: null, timeout: null });
 
   return (

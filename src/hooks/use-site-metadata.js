@@ -9,6 +9,7 @@ export default (key) => {
             colors {
               primary
             }
+            title
           }
         }
       }
