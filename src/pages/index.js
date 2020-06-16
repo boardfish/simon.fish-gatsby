@@ -112,14 +112,19 @@ export default (props) => {
             >
               <CardBody>
                 <div
+                  className={css({
+                    borderLeft: `.5em solid ${colors.primary}`,
+                    paddingLeft: ".5em"
+                  })}
                   dangerouslySetInnerHTML={{
                     __html: testimonial.node.text.childMarkdownRemark.html,
                   }}
                 ></div>
-                <div>
-                  <small>
-                    {testimonial.node.author}, {testimonial.node.authorRole}
-                  </small>
+                <div className={css({
+                  fontSize: '.8em',
+                  textAlign: 'right',
+                })}>
+                  // {testimonial.node.author}, {testimonial.node.authorRole}
                 </div>
               </CardBody>
             </a>
@@ -160,7 +165,7 @@ export default (props) => {
           </p>
         </div>
         {Object.entries(portfolio).map(([category, items]) => (
-          <div className={`card`}>
+          <div className={`portfolio-card`}>
             <h4 className="card-header">{category}</h4>
             <ul
               className={`list-group list-group-flush ${css({
@@ -305,7 +310,7 @@ export default (props) => {
         <p className={`lead ${css({ color: '#444'})}`}>Here, I'll be writing about things I've done and learned.</p>
         <ul className="article-list card-deck list-unstyled">
           {posts.map(({ node }) => {
-            return <ArticlePreview article={node} key={node.slug} className={css({ margin: 0})} />;
+            return <ArticlePreview article={node} key={node.slug} className={css({ margin: 0, color: '#222'})} />;
           })}
         </ul>
       </section>
@@ -324,7 +329,7 @@ export const pageQuery = graphql`
           tags
           heroImage {
             fluid(quality: 60, resizingBehavior: FILL) {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
           description {
@@ -357,7 +362,7 @@ export const pageQuery = graphql`
           title
           heroImage: image {
             fixed(width: 400, height: 400) {
-              ...GatsbyContentfulFixed_tracedSVG
+              ...GatsbyContentfulFixed
             }
           }
         }

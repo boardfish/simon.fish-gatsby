@@ -25,10 +25,15 @@ span.navbar-toggler-icon {
 }
 
 .card {
+  color: #222
+}
+
+.portfolio-card {
+  @extend .card;
   @extend .bg-dark;
+  color: white;
   .card-title {
     @extend .h3;
-    color: white;
   }
 }
 
@@ -48,5 +53,12 @@ span.navbar-toggler-icon {
   padding: 0;
   > * {
     padding: 0 $spacer;
+  }
+}
+
+section#post a {
+  color: #039;
+  &:hover {
+    color: #006;
   }
 }

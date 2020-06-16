@@ -17,11 +17,18 @@ export default ({ article, className }) => {
         <CardTitle>
           <Link
             to={`/blog/${article.slug}`}
+            className={css({
+              color: "#222",
+              fontSize: "1.5em",
+              ":hover": {
+                color: "#039"
+              }
+            })}
           >
             {article.title}{" "}
             <span
               className={css({
-                color: "#ddd",
+                color: "#666",
               })}
             >
               {`//${article.publishDate}`}

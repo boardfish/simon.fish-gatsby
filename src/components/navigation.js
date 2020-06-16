@@ -137,6 +137,15 @@ export default ({ data, color }) => {
               },
             })}
           >
+            <hr className={css({ borderColor: 'white' })}></hr>
+          </NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
             <a
               href={`https://github.com/${data.github}`}
               className={

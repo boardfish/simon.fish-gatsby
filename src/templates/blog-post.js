@@ -35,6 +35,7 @@ import { useStyletron } from "styletron-react";
             </p>
             <hr />
             <div
+              className={css({ a: { color: "red" }})}
               dangerouslySetInnerHTML={{
                 __html: post.body.childMarkdownRemark.html,
               }}
