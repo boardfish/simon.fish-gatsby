@@ -53,8 +53,6 @@ export default ({ children }) => {
       ref={ref}
       className={`container-fluid ${css({
         flexDirection: "column",
-        backgroundColor: colors.primary,
-        color: "white",
         height: "100vh",
         overflowY: "auto",
         scrollBehavior: "smooth",

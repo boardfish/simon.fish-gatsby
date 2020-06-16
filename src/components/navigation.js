@@ -28,7 +28,6 @@ export default ({ data, color }) => {
       <Link
         to="/#hero"
         className={css({
-          color: "white",
           textTransform: "uppercase",
           fontWeight: "bold",
           letterSpacing: "0.4rem",

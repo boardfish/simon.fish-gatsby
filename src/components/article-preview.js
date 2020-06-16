@@ -16,13 +16,6 @@ export default ({ article }) => {
       <CardBody>
         <CardTitle>
           <Link
-            className={css({
-              color: "white",
-              ":hover": {
-                color: "#bbb",
-                textDecoration: "none"
-              }
-            })}
             to={`/blog/${article.slug}`}
           >
             {article.title}{" "}
