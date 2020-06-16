@@ -4,10 +4,10 @@ import Img from "gatsby-image";
 import { useStyletron } from "styletron-react";
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 
-export default ({ article }) => {
+export default ({ article, className }) => {
   const [css] = useStyletron();
   return (
-    <Card tag={"li"}>
+    <Card tag={"li"} className={className}>
       <Img
         className='card-img-top'
         alt={article.heroImage.description}

@@ -305,7 +305,7 @@ export default (props) => {
         <p className={`lead ${css({ color: '#444'})}`}>Here, I'll be writing about things I've done and learned.</p>
         <ul className="article-list card-deck list-unstyled">
           {posts.map(({ node }) => {
-            return <ArticlePreview article={node} key={node.slug} />;
+            return <ArticlePreview article={node} key={node.slug} className={css({ margin: 0})} />;
           })}
         </ul>
       </section>
@@ -323,7 +323,7 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: FILL) {
+            fluid(quality: 60, resizingBehavior: FILL) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }
