@@ -190,6 +190,7 @@ export default (props) => {
                       color: "#222",
                       ":hover": {
                         textDecoration: "none",
+                        color: '#039'
                       },
                       display: "flex",
                       width: "100%",
