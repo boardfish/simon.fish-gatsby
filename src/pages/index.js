@@ -107,7 +107,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPortfolioItem(sort: { fields: [endDate, date], order: DESC }) {
+    allContentfulPortfolioItem(sort: { fields: [priority, endDate, date], order: [DESC, DESC, DESC] }) {
       edges {
         node {
           id
