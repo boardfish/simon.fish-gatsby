@@ -9,6 +9,7 @@ import Testimonials from '../components/testimonials'
 import Portfolio from '../components/portfolio'
 import About from "../components/about";
 import Blog from "../components/blog";
+import Contact from '../components/contact'
 
 export default (props) => {
   const blog = get(props, "data.allContentfulBlogPost.edges");
@@ -34,12 +35,30 @@ export default (props) => {
       <Testimonials data={testimonials} darkenAmount={6} />
       <Portfolio data={portfolio} darkenAmount={4} />
       <Blog data={blog} darkenAmount={2} />
+      <Contact data={props.data.allContentfulSocialLink.edges} />
     </Layout>
   );
 };
 
 export const pageQuery = graphql`
   query HomeQuery {
+    allContentfulSocialLink {
+      edges {
+        node {
+          link
+          platform {
+            color
+            name
+            linkPrefix
+            icon {
+              file {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {

@@ -132,6 +132,26 @@ export default ({ data, backgroundColor, color }) => {
               Blog
             </Link>
           </NavItem>
+<NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <Link
+              to="#contact"
+              className={
+                "nav-link " +
+                css({
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
+              Contact Me
+            </Link>
+          </NavItem>
           <NavItem
             className={css({
               "@media (min-width: 768px)": {
