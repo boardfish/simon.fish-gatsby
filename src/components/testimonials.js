@@ -3,13 +3,11 @@ import useSiteMetadata from "../hooks/use-site-metadata";
 import tinycolor from 'tinycolor2'
 import { useStyletron } from "styletron-react";
 import { graphql } from "gatsby";
-import get from "lodash/get";
 import { CardBody } from "reactstrap";
 
 export default (props) => {
   const colors = useSiteMetadata("colors")
   const [css] = useStyletron()
-//   const testimonials = get(props, "data.allContentfulTestimonial.edges");
   return (
     <section
       id="testimonials"
