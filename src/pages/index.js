@@ -34,7 +34,7 @@ export default (props) => {
       <About data={author.node} />
       <Testimonials data={testimonials} />
       <Portfolio data={portfolio} />
-      <Blog data={blog} backgroundColor="#ddd" color="#222" />
+      <Blog data={blog} />
     </Layout>
   );
 };

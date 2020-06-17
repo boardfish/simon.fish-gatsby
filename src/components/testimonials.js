@@ -1,6 +1,6 @@
 import React from "react";
 import useSiteMetadata from "../hooks/use-site-metadata";
-import tinycolor from 'tinycolor2'
+import useColors from "../hooks/use-colors";
 import { useStyletron } from "styletron-react";
 import { graphql } from "gatsby";
 import { CardBody } from "reactstrap";
@@ -8,8 +8,7 @@ import { CardBody } from "reactstrap";
 export default ({ data, backgroundColor, color }) => {
   const colors = useSiteMetadata("colors")
   const [css] = useStyletron()
-  const bgColor = backgroundColor || tinycolor(colors.primary).darken(5).toString()
-  const fgColor = color || (tinycolor(bgColor).isLight() ? "black" : "white")
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount: 5 })
   return (
     <section
       id="testimonials"

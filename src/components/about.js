@@ -1,14 +1,13 @@
 import React from "react";
 import useSiteMetadata from "../hooks/use-site-metadata";
 import { useStyletron } from "styletron-react";
-import tinycolor from "tinycolor2"
+import useColors from "../hooks/use-colors"
 import Img from "gatsby-image";
 
 export default ({ data, backgroundColor, color }) => {
   const [css] = useStyletron()
   const colors = useSiteMetadata("colors")
-  const bgColor = backgroundColor || tinycolor(colors.primary).darken(4).toString()
-  const fgColor = color || (tinycolor(bgColor).isLight() ? "black" : "white")
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount: 4 })
   return (
     <section
       id="about"

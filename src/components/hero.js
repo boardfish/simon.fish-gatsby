@@ -3,15 +3,12 @@ import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import usePortfolioImages from "../hooks/use-portfolio-images";
 import { useStyletron } from "styletron-react";
-import tinycolor from 'tinycolor2'
-import useSiteMetadata from "../hooks/use-site-metadata";
+import useColors from "../hooks/use-colors";
 
 export default ({ data, id = "hero", backgroundColor, color }) => {
   const images = usePortfolioImages();
   const [css] = useStyletron();
-  const colors = useSiteMetadata("colors")
-  const bgColor = backgroundColor || tinycolor(colors.primary).darken(6).toString()
-  const fgColor = color || (tinycolor(bgColor).isLight() ? "black" : "white")
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount: 6 })
   return (
     <section
       id={id}

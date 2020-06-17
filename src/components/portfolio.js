@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { useStyletron } from "styletron-react";
 import tinycolor from 'tinycolor2'
-import useSiteMetadata from "../hooks/use-site-metadata";
+import useColors from "../hooks/use-colors";
 import { Link } from "gatsby";
 
 export default ({ data, backgroundColor, color }) => {
   const [css] = useStyletron()
-  const colors = useSiteMetadata("colors")
   const [techIndicator, setTechIndicator] = useState({ id: null, text: null, timeout: null });
-  const bgColor = backgroundColor || tinycolor(colors.primary).darken(6).toString()
-  const fgColor = color || (tinycolor(bgColor).isLight() ? "black" : "white")
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount: 6 })
   return (
     <section
       id="portfolio"

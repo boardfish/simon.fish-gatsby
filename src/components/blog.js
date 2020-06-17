@@ -1,12 +1,11 @@
 import React from "react";
 import { useStyletron } from "styletron-react";
 import ArticlePreview from "../components/article-preview";
-import tinycolor from 'tinycolor2'
+import useColors from '../hooks/use-colors'
 
 export default ({ data, backgroundColor, color }) => {
   const [css] = useStyletron()
-  const bgColor = backgroundColor || "#ddd"
-  const fgColor = color || (tinycolor(bgColor).isLight() ? "black" : "white")
+  const { bgColor, fgColor } = useColors({ color, backgroundColor }, { colorLight: "#222", colorDark: "#eee", backgroundColor: '#ddd' })
   return (
     <section
       id="blog"
