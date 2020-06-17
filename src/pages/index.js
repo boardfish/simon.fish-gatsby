@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-import { graphql, Link } from "gatsby";
+import React from "react";
+import { graphql } from "gatsby";
 import get from "lodash/get";
 import Helmet from "react-helmet";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
-import tinycolor from "tinycolor2";
-import { useStyletron } from "styletron-react";
 import useSiteMetadata from "../hooks/use-site-metadata";
 import Testimonials from '../components/testimonials'
 import Portfolio from '../components/portfolio'
-import { CardBody } from "reactstrap";
-import { ReactSVG } from "react-svg";
 import About from "../components/about";
 import Blog from "../components/blog";
 
@@ -28,10 +24,8 @@ export default (props) => {
     get(props, "data.allContentfulPortfolioItem.edges"),
     "node.category"
   );
-  const [css] = useStyletron();
   const siteMetadata = useSiteMetadata()
   const siteTitle = get(siteMetadata, "title");
-  const colors = get(siteMetadata, "colors");
 
   return (
     <Layout location={props.location}>
@@ -40,7 +34,7 @@ export default (props) => {
       <About data={author.node} />
       <Testimonials data={testimonials} />
       <Portfolio data={portfolio} />
-      <Blog data={blog} />
+      <Blog data={blog} backgroundColor="#ddd" color="#222" />
     </Layout>
   );
 };
