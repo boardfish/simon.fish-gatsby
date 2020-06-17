@@ -4,15 +4,17 @@ import tinycolor from 'tinycolor2'
 import useSiteMetadata from "../hooks/use-site-metadata";
 import { Link } from "gatsby";
 
-export default ({ data }) => {
+export default ({ data, backgroundColor, color }) => {
   const [css] = useStyletron()
   const colors = useSiteMetadata("colors")
   const [techIndicator, setTechIndicator] = useState({ id: null, text: null, timeout: null });
+  const bgColor = backgroundColor || tinycolor(colors.primary).darken(6).toString()
+  const fgColor = color || (tinycolor(bgColor).isLight() ? "black" : "white")
   return (
     <section
       id="portfolio"
       className={css({
-        backgroundColor: tinycolor(colors.primary).darken(6).toString(),
+        backgroundColor: bgColor,
         minHeight: "100%",
         display: "grid",
         gridGap: "1em",
@@ -37,8 +39,8 @@ export default ({ data }) => {
           },
         })}`}
       >
-        <h2 className={`section-headline`}>Portfolio</h2>
-        <p className="lead">Here are some examples of what I've been up to.</p>
+        <h2 className={css({ color: fgColor })}>Portfolio</h2>
+        <p className={`lead ${css({ color: fgColor })}`}>Here are some examples of what I've been up to.</p>
       </div>
       {Object.entries(data).map(([category, items]) => (
         <div className={`portfolio-card`}>

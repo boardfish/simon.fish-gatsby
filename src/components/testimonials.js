@@ -5,14 +5,17 @@ import { useStyletron } from "styletron-react";
 import { graphql } from "gatsby";
 import { CardBody } from "reactstrap";
 
-export default (props) => {
+export default ({ data, backgroundColor, color }) => {
   const colors = useSiteMetadata("colors")
   const [css] = useStyletron()
+  const bgColor = backgroundColor || tinycolor(colors.primary).darken(5).toString()
+  const fgColor = color || (tinycolor(bgColor).isLight() ? "black" : "white")
   return (
     <section
       id="testimonials"
       className={css({
-        backgroundColor: tinycolor(colors.primary).darken(5).toString(),
+        backgroundColor: bgColor,
+        color: fgColor,
         minHeight: "100%",
         paddingTop: "1em",
         paddingBottom: "1em",
@@ -37,7 +40,7 @@ export default (props) => {
           },
         })}
       >
-        {props.data.map((testimonial, index) => (
+        {data.map((testimonial, index) => (
           <a
             className={`card ${css({
               fontWeight: "normal",

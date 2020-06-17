@@ -3,17 +3,22 @@ import { Link } from "gatsby";
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
 import { useStyletron } from "styletron-react";
 import tinycolor from "tinycolor2";
+import useSiteMetadata from "../hooks/use-site-metadata";
 
-export default ({ data, color }) => {
+export default ({ data, backgroundColor, color }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [css] = useStyletron();
+  const colors = useSiteMetadata("colors")
+  const bgColor = backgroundColor || tinycolor(colors.primary).darken(3).toString()
+  const fgColor = color || (tinycolor(bgColor).isLight() ? "black" : "white")
 
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Navbar
       expand="md"
       className={css({
-        backgroundColor: tinycolor(color).darken(3).toString(),
+        backgroundColor: bgColor,
+        color: fgColor,
         flexGrow: 1,
         gridColumnStart: 0,
         overflowY: 'auto',
@@ -28,6 +33,7 @@ export default ({ data, color }) => {
       <Link
         to="/#hero"
         className={css({
+          color: fgColor,
           textTransform: "uppercase",
           fontWeight: "bold",
           letterSpacing: "0.4rem",
@@ -58,7 +64,6 @@ export default ({ data, color }) => {
               className={
                 "nav-link " +
                 css({
-                  color: "#fff",
                   fontWeight: "bold",
                   fontSize: "1.5rem",
                 })
@@ -79,7 +84,6 @@ export default ({ data, color }) => {
               className={
                 "nav-link " +
                 css({
-                  color: "#fff",
                   fontWeight: "bold",
                   fontSize: "1.5rem",
                 })
@@ -100,7 +104,6 @@ export default ({ data, color }) => {
               className={
                 "nav-link " +
                 css({
-                  color: "#fff",
                   fontWeight: "bold",
                   fontSize: "1.5rem",
                 })
@@ -121,7 +124,6 @@ export default ({ data, color }) => {
               className={
                 "nav-link " +
                 css({
-                  color: "#fff",
                   fontWeight: "bold",
                   fontSize: "1.5rem",
                 })
@@ -137,7 +139,7 @@ export default ({ data, color }) => {
               },
             })}
           >
-            <hr className={css({ borderColor: 'white' })}></hr>
+            <hr className={css({ borderColor: fgColor })}></hr>
           </NavItem>
           <NavItem
             className={css({
@@ -151,7 +153,6 @@ export default ({ data, color }) => {
               className={
                 "nav-link " +
                 css({
-                  color: "#fff",
                   fontWeight: "bold",
                   fontSize: "1.5rem",
                 })
@@ -172,7 +173,6 @@ export default ({ data, color }) => {
               className={
                 "nav-link " +
                 css({
-                  color: "#fff",
                   fontWeight: "bold",
                   fontSize: "1.5rem",
                 })

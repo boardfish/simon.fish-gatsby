@@ -23,7 +23,7 @@ export default (props) => {
         },
       })}
     >
-      <Navigation data={author} color={colors.primary} />
+      <Navigation data={author} />
       <Container>{children}</Container>
     </main>
   );

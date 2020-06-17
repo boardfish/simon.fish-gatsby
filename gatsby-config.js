@@ -27,7 +27,7 @@ module.exports = {
   siteMetadata: {
     title: "Simon Fish",
     colors: {
-      primary: "#066e8a",
+      primary: "#069",
     },
   },
   pathPrefix: "/gatsby-contentful-starter",
