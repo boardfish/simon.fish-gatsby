@@ -51,27 +51,25 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
             })}`}
           >
             {data["Key Projects"].map((item) => (
-              <li
-                className={`list-group-item ${css({
+                <Link
+                  to={`/portfolio/${item.node.id}`}
+                  className={`list-group-item ${css({
+                    color: "#222",
                   flexGrow: 1,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   transition: ".2s transform",
                   ":hover": {
+                    color: "#222 !important",
                     backgroundColor: "#ccc",
                     transform: "translateX(.5em)",
-                  },
-                })}`}
-              >
-                <Link
-                  to={`/portfolio/${item.node.id}`}
-                  className={css({
-                    color: "#222",
-                    ":hover": {
                       textDecoration: "none",
                       color: "#039",
-                    },
+                  },
+                  })}`}
+                >
+                <div className={css({
                     display: "flex",
                     width: "100%",
                     flexDirection: "column",
@@ -81,8 +79,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
                       flexDirection: "row",
                       alignItems: "center",
                     },
-                  })}
-                >
+                })}>
                   <h5
                     className={css({
                       marginBottom: 0,
@@ -98,7 +95,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
                   <small className={css({ marginLeft: "auto" })}>
                     {item.node.date}
                   </small>
-                </Link>
+                </div>
                 <div
                   className={css({
                     display: "flex",
@@ -169,8 +166,8 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
                     })}
                   </div>
                 </div>
-                <p className={css({ marginBottom: 0 })}>{item.node.summary}</p>
-              </li>
+                <p className={css({ marginBottom: 0, fontWeight: 'normal',  })}>{item.node.summary}</p>
+                </Link>
             ))}
           </ul>
         </div>
@@ -187,27 +184,25 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
             })}`}
           >
             {items.map((item) => (
-              <li
-                className={`list-group-item ${css({
+                <Link
+                  to={`/portfolio/${item.node.id}`}
+                  className={`list-group-item ${css({
+                    color: "#222",
                   flexGrow: 1,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   transition: ".2s transform",
                   ":hover": {
+                    color: "#222 !important",
                     backgroundColor: "#ccc",
                     transform: "translateX(.5em)",
-                  },
-                })}`}
-              >
-                <Link
-                  to={`/portfolio/${item.node.id}`}
-                  className={css({
-                    color: "#222",
-                    ":hover": {
                       textDecoration: "none",
                       color: "#039",
-                    },
+                  },
+                  })}`}
+                >
+                <div className={css({
                     display: "flex",
                     width: "100%",
                     flexDirection: "column",
@@ -217,8 +212,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
                       flexDirection: "row",
                       alignItems: "center",
                     },
-                  })}
-                >
+                })}>
                   <h5
                     className={css({
                       marginBottom: 0,
@@ -234,7 +228,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
                   <small className={css({ marginLeft: "auto" })}>
                     {item.node.date}
                   </small>
-                </Link>
+                </div>
                 <div
                   className={css({
                     display: "flex",
@@ -305,8 +299,8 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
                     })}
                   </div>
                 </div>
-                <p className={css({ marginBottom: 0 })}>{item.node.summary}</p>
-              </li>
+                <p className={css({ marginBottom: 0, fontWeight: 'normal',  })}>{item.node.summary}</p>
+                </Link>
             ))}
           </ul>
         </div>
