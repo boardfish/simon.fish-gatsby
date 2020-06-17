@@ -9,6 +9,7 @@ import ArticlePreview from "../components/article-preview";
 import tinycolor from "tinycolor2";
 import { useStyletron } from "styletron-react";
 import useSiteMetadata from "../hooks/use-site-metadata";
+import Testimonials from '../components/testimonials'
 import { CardBody } from "reactstrap";
 import { ReactSVG } from "react-svg";
 
@@ -60,77 +61,7 @@ export default (props) => {
         ></div>
         <Img fixed={author.node.heroImage.fixed} />
       </section>
-      <section
-        id="testimonials"
-        className={css({
-          backgroundColor: tinycolor(colors.primary).darken(5).toString(),
-          minHeight: "100%",
-          paddingTop: "1em",
-          paddingBottom: "1em",
-          display: "flex",
-          flexDirection: "column",
-        })}
-      >
-        <h2>Testimonials</h2>
-        <p className="lead">Here's what folks I've worked with have to say.</p>
-        <div
-          className={css({
-            flexGrow: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            display: "grid",
-            gridGap: "1em",
-            gridTemplateColumns: "auto",
-            gridTemplateRows: "auto",
-            "@media (min-width: 768px)": {
-              gridTemplateColumns: "33% 33% auto",
-              gridTemplateRows: "auto auto auto",
-            },
-          })}
-        >
-          {testimonials.map((testimonial, index) => (
-            <a
-              className={`card ${css({
-                fontWeight: 'normal',
-                "@media (min-width: 768px)": {
-                  gridRow: index + 1,
-                  gridColumn: `${index % 2 === 0 ? 1 : 2} / span 2`,
-                },
-                transition: "transform .5s",
-                ":hover": {
-                  textDecoration: "none",
-                  transform: "translateY(-1em)",
-                },
-              })}`}
-              href={
-                testimonial.node.attachment
-                  ? testimonial.node.attachment.file.url
-                  : testimonial.node.link
-              }
-              target="blank"
-              rel="noopener"
-            >
-              <CardBody>
-                <div
-                  className={css({
-                    borderLeft: `.5em solid ${colors.primary}`,
-                    paddingLeft: ".5em"
-                  })}
-                  dangerouslySetInnerHTML={{
-                    __html: testimonial.node.text.childMarkdownRemark.html,
-                  }}
-                ></div>
-                <div className={css({
-                  fontSize: '.8em',
-                  textAlign: 'right',
-                })}>
-                  // {testimonial.node.author}, {testimonial.node.authorRole}
-                </div>
-              </CardBody>
-            </a>
-          ))}
-        </div>
-      </section>
+      <Testimonials data={testimonials} />
       <section
         id="portfolio"
         className={css({
