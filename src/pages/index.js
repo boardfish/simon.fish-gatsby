@@ -4,7 +4,6 @@ import get from "lodash/get";
 import Helmet from "react-helmet";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
-import ArticlePreview from "../components/article-preview";
 import tinycolor from "tinycolor2";
 import { useStyletron } from "styletron-react";
 import useSiteMetadata from "../hooks/use-site-metadata";
@@ -13,9 +12,10 @@ import Portfolio from '../components/portfolio'
 import { CardBody } from "reactstrap";
 import { ReactSVG } from "react-svg";
 import About from "../components/about";
+import Blog from "../components/blog";
 
 export default (props) => {
-  const posts = get(props, "data.allContentfulBlogPost.edges");
+  const blog = get(props, "data.allContentfulBlogPost.edges");
   const [author] = get(props, "data.allContentfulPerson.edges");
   const testimonials = get(props, "data.allContentfulTestimonial.edges");
   const groupBy = function (xs, key) {
@@ -40,22 +40,7 @@ export default (props) => {
       <About data={author.node} />
       <Testimonials data={testimonials} />
       <Portfolio data={portfolio} />
-      <section
-        id="blog"
-        className={css({
-          backgroundColor: "#ddd",
-          minHeight: "100%",
-          paddingTop: "1em",
-        })}
-      >
-        <h2 className={css({ color: '#222'})}>Blog</h2>
-        <p className={`lead ${css({ color: '#444'})}`}>Here, I'll be writing about things I've done and learned.</p>
-        <ul className="article-list card-deck list-unstyled">
-          {posts.map(({ node }) => {
-            return <ArticlePreview article={node} key={node.slug} className={css({ margin: 0, color: '#222'})} />;
-          })}
-        </ul>
-      </section>
+      <Blog data={blog} />
     </Layout>
   );
 };
