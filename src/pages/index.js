@@ -30,11 +30,11 @@ export default (props) => {
   return (
     <Layout location={props.location}>
       <Helmet title={siteTitle} />
-      <Hero data={author.node} />
-      <About data={author.node} />
-      <Testimonials data={testimonials} />
-      <Portfolio data={portfolio} />
-      <Blog data={blog} />
+      <Hero data={author.node} darkenAmount={10} />
+      <About data={author.node} darkenAmount={8} />
+      <Testimonials data={testimonials} darkenAmount={6} />
+      <Portfolio data={portfolio} darkenAmount={4} />
+      <Blog data={blog} darkenAmount={2} />
     </Layout>
   );
 };

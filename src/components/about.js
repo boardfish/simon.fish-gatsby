@@ -4,10 +4,10 @@ import { useStyletron } from "styletron-react";
 import useColors from "../hooks/use-colors"
 import Img from "gatsby-image";
 
-export default ({ data, backgroundColor, color }) => {
+export default ({ data, backgroundColor, color, darkenAmount }) => {
   const [css] = useStyletron()
   const colors = useSiteMetadata("colors")
-  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount: 4 })
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount })
   return (
     <section
       id="about"

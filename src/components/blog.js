@@ -3,9 +3,9 @@ import { useStyletron } from "styletron-react";
 import ArticlePreview from "../components/article-preview";
 import useColors from '../hooks/use-colors'
 
-export default ({ data, backgroundColor, color }) => {
+export default ({ data, backgroundColor, color, darkenAmount }) => {
   const [css] = useStyletron()
-  const { bgColor, fgColor } = useColors({ color, backgroundColor }, { colorLight: "#222", colorDark: "#eee", backgroundColor: '#ddd' })
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount }, { colorLight: "#222", colorDark: "#eee", backgroundColor: '#ddd' })
   return (
     <section
       id="blog"

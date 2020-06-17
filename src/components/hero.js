@@ -5,10 +5,10 @@ import usePortfolioImages from "../hooks/use-portfolio-images";
 import { useStyletron } from "styletron-react";
 import useColors from "../hooks/use-colors";
 
-export default ({ data, id = "hero", backgroundColor, color }) => {
+export default ({ data, id = "hero", backgroundColor, color, darkenAmount }) => {
   const images = usePortfolioImages();
   const [css] = useStyletron();
-  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount: 6 })
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount })
   return (
     <section
       id={id}

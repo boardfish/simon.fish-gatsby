@@ -4,10 +4,10 @@ import tinycolor from 'tinycolor2'
 import useColors from "../hooks/use-colors";
 import { Link } from "gatsby";
 
-export default ({ data, backgroundColor, color }) => {
+export default ({ data, backgroundColor, color, darkenAmount }) => {
   const [css] = useStyletron()
   const [techIndicator, setTechIndicator] = useState({ id: null, text: null, timeout: null });
-  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount: 6 })
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount })
   return (
     <section
       id="portfolio"

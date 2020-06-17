@@ -5,10 +5,10 @@ import { useStyletron } from "styletron-react";
 import { graphql } from "gatsby";
 import { CardBody } from "reactstrap";
 
-export default ({ data, backgroundColor, color }) => {
+export default ({ data, backgroundColor, color, darkenAmount }) => {
   const colors = useSiteMetadata("colors")
   const [css] = useStyletron()
-  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount: 5 })
+  const { bgColor, fgColor } = useColors({ color, backgroundColor, darkenAmount })
   return (
     <section
       id="testimonials"
