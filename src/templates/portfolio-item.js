@@ -7,15 +7,16 @@ import Layout from "../components/layout";
 import { useStyletron } from "styletron-react";
 import { ReactSVG } from "react-svg";
 import tinycolor from "tinycolor2";
+import useSiteMetadata from "../hooks/use-site-metadata";
 
 export default (props) => {
   const [css] = useStyletron();
   const item = get(props, "data.contentfulPortfolioItem");
-  const siteTitle = get(props, "data.site.siteMetadata.title");
+  const { title, helmet } = useSiteMetadata();
 
   return (
     <Layout location={props.location}>
-      <Helmet title={`${item.title} | ${siteTitle}`} />
+      <Helmet title={`${item.title} | ${title}`} {...helmet} />
       <div
         className={css({
           minHeight: "100%",

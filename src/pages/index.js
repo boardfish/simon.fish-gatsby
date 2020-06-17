@@ -24,12 +24,11 @@ export default (props) => {
     get(props, "data.allContentfulPortfolioItem.edges"),
     "node.category"
   );
-  const siteMetadata = useSiteMetadata()
-  const siteTitle = get(siteMetadata, "title");
+  const { title, helmet } = useSiteMetadata();
 
   return (
     <Layout location={props.location}>
-      <Helmet title={siteTitle} />
+      <Helmet title={title} {...helmet} />
       <Hero data={author.node} darkenAmount={10} />
       <About data={author.node} darkenAmount={8} />
       <Testimonials data={testimonials} darkenAmount={6} />

@@ -29,6 +29,18 @@ module.exports = {
     colors: {
       primary: "#069",
     },
+    helmet: {
+        meta: [
+        {
+          name: "description",
+          content: "Simon Fish",
+        },
+        {
+          name: "keywords",
+          content: "software, developer, junior, graduate, ruby, rails, react",
+        },
+      ],
+    }
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [
@@ -47,6 +59,18 @@ module.exports = {
         // You can pass options to Styletron.
         // Prefix all generated classNames:
         prefix: "_",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Simon Fish`,
+        short_name: `Simon Fish`,
+        start_url: `/`,
+        background_color: `#069`,
+        theme_color: `#fff`,
+        display: `standalone`,
+        icon: `src/assets/images/LogoWhite.svg`
       },
     },
   ],

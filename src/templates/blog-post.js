@@ -5,10 +5,11 @@ import get from "lodash/get";
 import Img from "gatsby-image";
 import Layout from "../components/layout";
 import { useStyletron } from "styletron-react";
+import useSiteMetadata from "../hooks/use-site-metadata";
 
   export default (props) => {
     const post = get(props, "data.contentfulBlogPost");
-    const siteTitle = get(props, "data.site.siteMetadata.title");
+    const { title, helmet } = useSiteMetadata();
     const [css] = useStyletron()
 
     return (
@@ -19,7 +20,7 @@ import { useStyletron } from "styletron-react";
           color: '#222',
           backgroundColor: '#ddd'
           })}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <Helmet title={`${post.title} | ${title}`} {...helmet} />
           <div>
             <Img alt={post.title} fluid={post.heroImage.fluid} />
           </div>
