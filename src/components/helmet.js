@@ -47,7 +47,7 @@ export default (props) => {
       {/* {isBlogPost ? <meta property="og:type" content="article" /> : null} */}
       <meta property="og:title" content={data.site.siteMetadata.title} />
       <meta property="og:description" content={data.site.siteMetadata.description} />
-      <meta property="og:image" content={data.contentfulPerson.image.file.url} />
+      <meta property="og:image" content={`https:${data.contentfulPerson.image.file.url}`} />
       <meta property="og:image:height" content={data.contentfulPerson.image.file.details.image.height} />
       <meta property="og:image:width" content={data.contentfulPerson.image.file.details.image.width} />
 
@@ -56,7 +56,7 @@ export default (props) => {
       <meta name="twitter:creator" content={data.contentfulSocialLink.link} />
       <meta name="twitter:title" content={data.site.siteMetadata.title} />
       <meta name="twitter:description" content={data.site.siteMetadata.description} />
-      <meta property="twitter:image" content={data.contentfulPerson.image.file.url} />
+      <meta property="twitter:image" content={`https:${data.contentfulPerson.image.file.url}`} />
       <script type="application/ld+json">
         {`
         {
