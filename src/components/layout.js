@@ -30,7 +30,7 @@ export default (props) => {
           minHeight: "5em",
           fontSize: '.8em'
         })}>
-          Copyright © 2016-2020 Simon Fish
+          Copyright © 2016-{(new Date().getFullYear())} Simon Fish
         </footer>
       </Container>
     </main>

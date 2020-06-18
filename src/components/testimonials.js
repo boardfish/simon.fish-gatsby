@@ -2,7 +2,6 @@ import React from "react";
 import useSiteMetadata from "../hooks/use-site-metadata";
 import useColors from "../hooks/use-colors";
 import { useStyletron } from "styletron-react";
-import { graphql } from "gatsby";
 import { CardBody } from "reactstrap";
 
 export default ({ data, backgroundColor, color, darkenAmount }) => {
@@ -87,27 +86,3 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
     </section>
   );
 };
-
-export const query = graphql`
-query AllTestimonial {
-  allContentfulTestimonial {
-    edges {
-      node {
-        author
-        authorRole
-        link
-        text {
-          childMarkdownRemark {
-            html
-          }
-        }
-        attachment {
-          file {
-            url
-          }
-        }
-      }
-    }
-  }
-}
-`

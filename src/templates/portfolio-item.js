@@ -25,7 +25,32 @@ export default (props) => {
           justifyContent: "center",
         })}
       >
-        <h1 className="section-headline">{item.title}</h1>
+        <div className={css({
+          display: 'flex',
+          alignItems: 'center',
+          width: '100%',
+          flexDirection: 'column',
+          '@media (min-width: 768px)': {
+            flexDirection: 'row'
+          }
+          })}>
+          <h1 className="section-headline">{item.title}</h1>
+          <span className={css({
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            fontSize: '1.2em',
+            letterSpacing: '.1em',
+            textTransform: 'uppercase',
+            '@media (min-width: 768px)': {
+              marginRight: 0,
+            }
+          })}>
+            {item.date}
+            {item.year === item.endYear ? "" : ` ${item.year}`}
+            {item.endDate ? ` – ⁠${item.endDate} ` : " "}
+            {item.endYear}
+          </span>
+        </div>
         {(item.images || []).map((image) => (
           <div className={css({ height: "40vh" })}>
             <Img
@@ -35,12 +60,7 @@ export default (props) => {
             />
           </div>
         ))}
-        <p>
-          {item.date}
-          {item.year === item.endYear ? "" : ` ${item.year}`}
-          {item.endDate ? `-${item.endDate} ` : " "}
-          {item.endYear}
-        </p>
+
         <p className={css({ display: "flex", overflowY: "auto" })}>
           {(item.tools || []).map((tool) => {
             if (tool.icon) {
@@ -78,7 +98,7 @@ export default (props) => {
                     backgroundColor: tinycolor(tool.color || "#ddd").isLight()
                       ? "black"
                       : "white",
-                    whiteSpace: 'nowrap'
+                    whiteSpace: "nowrap",
                   })}
                 >
                   {tool.name}
