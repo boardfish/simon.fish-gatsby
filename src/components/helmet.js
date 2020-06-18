@@ -20,8 +20,8 @@ export default (props) => {
         }
         contentfulPerson {
           image {
-            file {
-              url
+            fluid {
+              base64
             }
           }
         }
