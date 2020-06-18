@@ -22,6 +22,9 @@ export default ({ data, backgroundColor, color }) => {
         flexGrow: 1,
         gridColumnStart: 0,
         overflowY: 'auto',
+        position: 'fixed',
+        zIndex: 1,
+        width: '100%',
         "@media (min-width: 768px)": {
           position: "sticky",
           width: "auto",
@@ -199,6 +202,26 @@ export default ({ data, backgroundColor, color }) => {
               }
             >
               CV/Resume
+            </a>
+          </NavItem>
+<NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <a
+              href='https://linkedin.com/in/boardfish'
+              className={
+                "nav-link " +
+                css({
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
+              LinkedIn
             </a>
           </NavItem>
         </Nav>

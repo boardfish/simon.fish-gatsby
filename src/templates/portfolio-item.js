@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import Helmet from "react-helmet";
+import Helmet from "../components/helmet";
 import get from "lodash/get";
 import Layout from "../components/layout";
 import { useStyletron } from "styletron-react";

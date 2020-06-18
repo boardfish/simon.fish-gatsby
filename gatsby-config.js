@@ -25,13 +25,15 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://simon.fish',
+    siteUrl: "https://simon.fish",
     title: "Simon Fish",
+    description:
+      "Engineering and educating for a free and open web. University of Sheffield Computer Science graduate with a year of industry experience. Experienced with Ruby, React, and more.",
     colors: {
       primary: "#069",
     },
     helmet: {
-        meta: [
+      meta: [
         {
           name: "description",
           content: "Simon Fish",
@@ -41,7 +43,7 @@ module.exports = {
           content: "software, developer, junior, graduate, ruby, rails, react",
         },
       ],
-    }
+    },
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [
@@ -72,7 +74,7 @@ module.exports = {
         background_color: `#069`,
         theme_color: `#fff`,
         display: `standalone`,
-        icon: `src/assets/images/LogoWhite.svg`
+        icon: `src/assets/images/LogoWhite.svg`,
       },
     },
   ],

@@ -53,9 +53,15 @@ export default ({ children }) => {
       ref={ref}
       className={`container-fluid ${css({
         flexDirection: "column",
-        height: "100vh",
+        height: "90vh",
         overflowY: "auto",
         scrollBehavior: "smooth",
+        marginTop: "10vh",
+        overscrollBehavior: 'contain',
+        "@media (min-width: 768px)": {
+          marginTop: 0,
+          height: "100vh",
+        }
       })}`}
     >
       {children}
