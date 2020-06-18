@@ -21,6 +21,12 @@ export default (props) => {
         contentfulPerson {
           image {
             file {
+              details {
+                image {
+                  height
+                  width
+                }
+              }
               url
             }
           }
@@ -42,6 +48,8 @@ export default (props) => {
       <meta property="og:title" content={data.site.siteMetadata.title} />
       <meta property="og:description" content={data.site.siteMetadata.description} />
       <meta property="og:image" content={data.contentfulPerson.image.file.url} />
+      <meta property="og:image:height" content={data.contentfulPerson.image.file.details.image.height} />
+      <meta property="og:image:width" content={data.contentfulPerson.image.file.details.image.width} />
 
       {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />
