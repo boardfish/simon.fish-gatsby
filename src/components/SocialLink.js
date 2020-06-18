@@ -21,6 +21,7 @@ export default ({ node, backgroundColor, color, darkenAmount }) => {
         padding: "1rem",
         borderRadius: ".5rem",
         alignItems: "center",
+        display: 'inline-block',
       })}
     >
       {typeof node.platform.icon === 'undefined' ? '' : <ReactSVG

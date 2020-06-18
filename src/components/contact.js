@@ -14,7 +14,6 @@ export default ({ data, color, backgroundColor, darkenAmount }) => {
     <section
       id="contact"
       className={css({
-        minHeight: "50vh",
         paddingTop: '1em',
         paddingBottom: '3em'
       })}
@@ -26,8 +25,13 @@ export default ({ data, color, backgroundColor, darkenAmount }) => {
       </p>
       <div className={css({
         display: 'grid',
-        gridTemplateColumns: '50% auto',
-        gridGap: '1em'
+        gridGap: '1em',
+        "@media (min-width: 768px)": {
+          gridTemplateColumns: "50% auto"
+        },
+        "@media (min-width: 992px)": {
+          gridTemplateColumns: "25% 25% 25% auto"
+        }
       })}>
         <SocialLinkGroup data={data} />
       </div>

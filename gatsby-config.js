@@ -25,6 +25,7 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://simon.fish',
     title: "Simon Fish",
     colors: {
       primary: "#069",
@@ -49,6 +50,7 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
     "gatsby-plugin-sass",
+    "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,

@@ -107,7 +107,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulTestimonial {
+    allContentfulTestimonial(sort: {fields: id, order: DESC}) {
       edges {
         node {
           author
