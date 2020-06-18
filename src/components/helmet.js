@@ -1,9 +1,11 @@
 import React from "react";
 import Helmet from "react-helmet";
+import { useStaticQuery } from "gatsby";
+
 export default (props) => {
   const data = useStaticQuery(
     graphql`
-      query GetSiteMetadata {
+      query GetHelmetMetadata {
         contentfulSocialLink(platform: {name: {eq: "Twitter"}}) {
           link
         }
