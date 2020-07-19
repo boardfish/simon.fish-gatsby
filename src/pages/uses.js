@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { graphql } from "gatsby";
 import get from "lodash/get";
 import kebabCase from "lodash/kebabCase";
+import flat from "lodash/flatten"
 import Helmet from "../components/helmet";
 import Layout from "../components/layout";
 import useSiteMetadata from "../hooks/use-site-metadata";
@@ -40,9 +41,9 @@ const UsesItem = (item) => (
 export default (props) => {
   const [css] = useStyletron();
   let items = get(props, "data.allContentfulUsesItem.nodes");
-  const subLevelItems = items
-    .map(({ associatedTools }) => (associatedTools || []).map((t) => t.id))
-    .flat();
+  const subLevelItems = flat(
+    items.map(({ associatedTools }) => (associatedTools || []).map((t) => t.id))
+  );
   items = items.filter((item) => !subLevelItems.includes(item.id));
   console.log(subLevelItems);
   const groupBy = function (xs, key) {
@@ -57,7 +58,14 @@ export default (props) => {
   return (
     <Layout location={props.location}>
       <Helmet title={title} {...helmet} />
-      <main className={css({ minHeight: "100vh", display: 'flex', flexDirection: 'column', justifyContent: 'center' })}>
+      <main
+        className={css({
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        })}
+      >
         <h1>Uses</h1>
         <p>Here's a list of a bunch of the things I use on a daily basis.</p>
         {Object.entries(uses).map(([category, items]) => (
