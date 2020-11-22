@@ -43,11 +43,16 @@ span.navbar-toggler-icon {
 .card-deck {
   @extend .mx-0;
   display: grid;
-  grid-template-columns: 50% auto;
-  grid-auto-columns: 50%;
   grid-gap: 1em;
   .card {
     @extend .mx-0;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-deck {
+    grid-template-columns: 50% auto;
+    grid-auto-columns: 50%;
   }
 }
 

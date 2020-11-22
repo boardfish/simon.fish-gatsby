@@ -13,6 +13,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         backgroundColor: bgColor,
         minHeight: "100%",
         paddingTop: "1em",
+        paddingBottom: "1em"
       })}
     >
       <h2 className={css({ color: fgColor })}>Blog</h2>

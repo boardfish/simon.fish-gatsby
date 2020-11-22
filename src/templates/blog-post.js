@@ -15,10 +15,14 @@ import useSiteMetadata from "../hooks/use-site-metadata";
     return (
       <Layout location={props.location}>
         <section id="post" className={css({
-          paddingTop: '3em',
           minHeight: '100vh',
+          maxWidth: '1024px',
+          margin: '1em auto 0 auto',
+          border: '2px inset black',
+          padding: '3em',
           color: '#222',
-          backgroundColor: '#ddd'
+          backgroundColor: '#ddd',
+          boxShadow: '10px 10px 22px 0px rgba(0, 0, 0, 0.28)'
           })}>
           <Helmet title={`${post.title} | ${title}`} {...helmet} />
           <div>
