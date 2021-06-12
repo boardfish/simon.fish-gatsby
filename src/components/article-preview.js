@@ -25,14 +25,7 @@ export default ({ article, className }) => {
               }
             })}
           >
-            {article.title}{" "}
-            <span
-              className={css({
-                color: "#666",
-              })}
-            >
-              {`//${article.publishDate}`}
-            </span>
+            {article.title}
           </Link>
         </CardTitle>
         <CardText
