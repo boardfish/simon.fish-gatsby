@@ -19,7 +19,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         paddingTop: "1em",
         paddingBottom: "1em",
         gridTemplateColumns: "auto",
-        "@media (min-width: 768px": {
+        "@media (min-width: 1024px": {
           gridTemplateColumns: "50% 50%",
         },
         "@media (min-width: 992px": {
@@ -29,7 +29,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
     >
       <div
         className={`${css({
-          "@media (min-width: 768px": {
+          "@media (min-width: 1024px": {
             gridColumn: "1 / span 2",
           },
           "@media (min-width: 992px": {
@@ -38,7 +38,10 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         })}`}
       >
         <h2 className={css({ color: fgColor })}>Portfolio</h2>
-        <p className={`lead ${css({ color: fgColor })}`}>Here are some examples of what I've been up to.</p>
+        <p className={`lead ${css({ color: fgColor })}`}>
+          Here are some examples of what I've been up to. You might also want to
+          check out my <a href="https://github.com/boardfish">GitHub profile</a>.
+        </p>
       </div>
       <div className={`portfolio-card`}>
           <h4 className="card-header">Key Projects</h4>

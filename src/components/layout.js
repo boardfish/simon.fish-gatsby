@@ -15,7 +15,7 @@ export default (props) => {
       className={css({
         display: "flex",
         flexDirection: "column",
-        "@media (min-width: 768px)": {
+        "@media (min-width: 1024px)": {
           display: "grid",
           gridTemplateColumns: "25% auto",
         },

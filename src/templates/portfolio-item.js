@@ -30,7 +30,7 @@ export default (props) => {
           alignItems: 'center',
           width: '100%',
           flexDirection: 'column',
-          '@media (min-width: 768px)': {
+          '@media (min-width: 1024px)': {
             flexDirection: 'row'
           }
           })}>
@@ -41,7 +41,7 @@ export default (props) => {
             fontSize: '1.2em',
             letterSpacing: '.1em',
             textTransform: 'uppercase',
-            '@media (min-width: 768px)': {
+            '@media (min-width: 1024px)': {
               marginRight: 0,
             }
           })}>

@@ -26,7 +26,7 @@ export default ({ data, color, backgroundColor, darkenAmount }) => {
       <div className={css({
         display: 'grid',
         gridGap: '1em',
-        "@media (min-width: 768px)": {
+        "@media (min-width: 1024px)": {
           gridTemplateColumns: "50% auto"
         },
         "@media (min-width: 992px)": {

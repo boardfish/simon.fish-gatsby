@@ -21,10 +21,6 @@ export default (props) => {
       return rv;
     }, {});
   };
-  const portfolio = groupBy(
-    get(props, "data.allContentfulPortfolioItem.edges"),
-    "node.category"
-  );
   const { title, helmet } = useSiteMetadata();
 
   return (
@@ -33,7 +29,6 @@ export default (props) => {
       <Hero data={author.node} darkenAmount={10} />
       <About data={author.node} darkenAmount={8} />
       <Testimonials data={testimonials} darkenAmount={6} />
-      <Portfolio data={portfolio} darkenAmount={4} />
       <Blog data={blog} darkenAmount={2} />
       <Contact data={props.data.allContentfulSocialLink.edges} />
     </Layout>
@@ -121,34 +116,6 @@ export const pageQuery = graphql`
             file {
               url
             }
-          }
-        }
-      }
-    }
-    allContentfulPortfolioItem(sort: { fields: [priority, endDate, date], order: [DESC, DESC, DESC] }) {
-      edges {
-        node {
-          id
-          date(formatString: "MMM Do, 'YY")
-          endDate(formatString: "MMM Do, 'YY")
-          location
-          projectName
-          summary
-          title
-          category
-          images {
-            fluid {
-              src
-            }
-          }
-          tools {
-            icon {
-              file {
-                url
-              }
-            }
-            color
-            name
           }
         }
       }
