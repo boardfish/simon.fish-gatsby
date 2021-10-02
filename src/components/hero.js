@@ -15,6 +15,7 @@ export default ({ data, id = "hero", backgroundColor, color, darkenAmount }) => 
       className={css({
         backgroundColor: bgColor,
         color: fgColor,
+        padding: "5em 0",
         "@media (min-width: 1024px)": {
           height: "100vh",
         },

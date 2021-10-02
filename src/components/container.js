@@ -56,7 +56,7 @@ export default ({ children }) => {
         height: "90vh",
         overflowY: "auto",
         scrollBehavior: "smooth",
-        marginTop: "10vh",
+        marginTop: "8vh",
         overscrollBehavior: 'contain',
         "@media (min-width: 1024px)": {
           marginTop: 0,
