@@ -25,7 +25,7 @@ export default ({ data, backgroundColor, color }) => {
         position: 'fixed',
         zIndex: 1,
         width: '100%',
-        "@media (min-width: 768px)": {
+        "@media (min-width: 1024px)": {
           position: "sticky",
           width: "auto",
           flexDirection: "column !important",
@@ -50,14 +50,14 @@ export default ({ data, backgroundColor, color }) => {
         <Nav
           navbar
           className={css({
-            "@media (min-width: 768px)": {
+            "@media (min-width: 1024px)": {
               flexDirection: "column !important",
             },
           })}
         >
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -77,7 +77,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -97,7 +97,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -117,7 +117,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -137,7 +137,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -146,7 +146,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -166,7 +166,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -186,7 +186,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -195,7 +195,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -215,7 +215,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
           <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}
@@ -235,7 +235,7 @@ export default ({ data, backgroundColor, color }) => {
           </NavItem>
 <NavItem
             className={css({
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 marginBottom: "2rem",
               },
             })}

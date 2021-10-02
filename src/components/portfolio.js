@@ -19,7 +19,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         paddingTop: "1em",
         paddingBottom: "1em",
         gridTemplateColumns: "auto",
-        "@media (min-width: 768px": {
+        "@media (min-width: 1024px": {
           gridTemplateColumns: "50% 50%",
         },
         "@media (min-width: 992px": {
@@ -29,7 +29,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
     >
       <div
         className={`${css({
-          "@media (min-width: 768px": {
+          "@media (min-width: 1024px": {
             gridColumn: "1 / span 2",
           },
           "@media (min-width: 992px": {

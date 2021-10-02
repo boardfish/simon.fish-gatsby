@@ -31,7 +31,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
           display: "grid",
           gridTemplateColumns: "auto",
           gridTemplateRows: "auto",
-          "@media (min-width: 768px)": {
+          "@media (min-width: 1024px)": {
             gridTemplateColumns: "33% 33% auto",
             gridTemplateRows: "auto auto auto",
           },
@@ -41,7 +41,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
           <a
             className={`card ${css({
               fontWeight: "normal",
-              "@media (min-width: 768px)": {
+              "@media (min-width: 1024px)": {
                 gridRow: index + 1,
                 gridColumn: `${index % 2 === 0 ? 1 : 2} / span 2`,
               },

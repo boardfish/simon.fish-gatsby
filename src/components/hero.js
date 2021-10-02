@@ -15,7 +15,7 @@ export default ({ data, id = "hero", backgroundColor, color, darkenAmount }) => 
       className={css({
         backgroundColor: bgColor,
         color: fgColor,
-        "@media (min-width: 768px)": {
+        "@media (min-width: 1024px)": {
           display: "grid",
           gridTemplateColumns: "75% auto",
           alignItems: "center",
@@ -25,12 +25,11 @@ export default ({ data, id = "hero", backgroundColor, color, darkenAmount }) => 
     >
       <div
         className={css({
-          height: "100vh",
           width: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          "@media (min-width: 768px)": {
+          "@media (min-width: 1024px)": {
             margin: "0 3rem",
             width: "90%",
           },
