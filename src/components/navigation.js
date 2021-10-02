@@ -103,26 +103,6 @@ export default ({ data, backgroundColor, color }) => {
             })}
           >
             <Link
-              to="#portfolio"
-              className={
-                "nav-link " +
-                css({
-                  fontWeight: "bold",
-                  fontSize: "1.5rem",
-                })
-              }
-            >
-              Portfolio
-            </Link>
-          </NavItem>
-          <NavItem
-            className={css({
-              "@media (min-width: 768px)": {
-                marginBottom: "2rem",
-              },
-            })}
-          >
-            <Link
               to="#blog"
               className={
                 "nav-link " +
@@ -143,26 +123,6 @@ export default ({ data, backgroundColor, color }) => {
             })}
           >
             <Link
-              to="/uses"
-              className={
-                "nav-link " +
-                css({
-                  fontWeight: "bold",
-                  fontSize: "1.5rem",
-                })
-              }
-            >
-              /uses
-            </Link>
-          </NavItem>
-<NavItem
-            className={css({
-              "@media (min-width: 768px)": {
-                marginBottom: "2rem",
-              },
-            })}
-          >
-            <Link
               to="#contact"
               className={
                 "nav-link " +
@@ -173,6 +133,55 @@ export default ({ data, backgroundColor, color }) => {
               }
             >
               Contact Me
+            </Link>
+          </NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <hr className={css({ borderColor: fgColor })}></hr>
+          </NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <Link
+              to="portfolio"
+              className={
+                "nav-link " +
+                css({
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
+              Portfolio
+            </Link>
+          </NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 768px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <Link
+              to="/uses"
+              className={
+                "nav-link " +
+                css({
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
+              /uses
             </Link>
           </NavItem>
           <NavItem

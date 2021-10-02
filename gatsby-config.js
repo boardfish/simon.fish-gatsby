@@ -30,7 +30,7 @@ module.exports = {
     description:
       "Engineering and educating for a free and open web. University of Sheffield Computer Science graduate with a year of industry experience. Experienced with Ruby, React, and more.",
     colors: {
-      primary: "#069",
+      primary: "#069"
     },
     helmet: {
       meta: [

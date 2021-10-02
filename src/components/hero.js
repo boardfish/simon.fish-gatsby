@@ -47,6 +47,16 @@ export default ({ data, id = "hero", backgroundColor, color, darkenAmount }) => 
             __html: data.shortBio.childMarkdownRemark.html,
           }}
         ></div>
+        <a href="#about" className={css({
+          background: fgColor,
+          color: bgColor,
+          padding: " 0.5rem 1rem",
+          alignSelf: "start",
+          borderRadius: "0.25rem",
+          fontWeight: "normal"
+        })}>
+          👋 Say hi!
+        </a>
       </div>
       <div
         className={css({

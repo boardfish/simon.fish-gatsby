@@ -38,7 +38,10 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         })}`}
       >
         <h2 className={css({ color: fgColor })}>Portfolio</h2>
-        <p className={`lead ${css({ color: fgColor })}`}>Here are some examples of what I've been up to.</p>
+        <p className={`lead ${css({ color: fgColor })}`}>
+          Here are some examples of what I've been up to. You might also want to
+          check out my <a href="https://github.com/boardfish">GitHub profile</a>.
+        </p>
       </div>
       <div className={`portfolio-card`}>
           <h4 className="card-header">Key Projects</h4>

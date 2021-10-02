@@ -27,12 +27,25 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         },
       })}
     >
-      <div
-        dangerouslySetInnerHTML={{
-          __html: data.longBio.childMarkdownRemark.html,
-        }}
-      ></div>
+      <div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data.longBio.childMarkdownRemark.html,
+          }}
+        ></div>
+        <a href="#testimonials" className={css({
+          background: fgColor,
+          color: bgColor,
+          padding: " 0.5rem 1rem",
+          alignSelf: "start",
+          borderRadius: "0.25rem",
+          fontWeight: "normal"
+        })}>
+          What do other folks think?
+        </a>
+      </div>
       <Img fixed={data.heroImage.fixed} />
+
     </section>
   );
 };
