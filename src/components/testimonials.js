@@ -19,40 +19,47 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         paddingBottom: "5em",
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center"
       })}
     >
+      <div className={css({
+        flexGrow: 1,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center"
+      })}>
       <h2>Testimonials</h2>
       <p className="lead">Don't just take it from me - here's what others have to say.</p>
       <div
         className={css({
-          flexGrow: 1,
-          justifyContent: "center",
+          justifyItems: "center",
           alignItems: "center",
           display: "grid",
           gridTemplateColumns: "auto",
           gridTemplateRows: "auto",
           "@media (min-width: 1024px)": {
-            gridTemplateColumns: "33% 33% auto",
-            gridTemplateRows: "auto auto auto",
+            gridTemplateColumns: "50% 50%",
+            gridTemplateRows: "auto auto",
+            marginBottom: "3em"
           },
         })}
       >
         {data.map((testimonial, index) => (
           <a
             className={`card ${css({
+              maxWidth: '65ch',
               fontWeight: "normal",
+              transform: "rotateX(-15deg) rotateY(15deg)",
+              boxShadow: ".5em .5em 0.2em 0.2em rgba($gray-700, 0.4)",
               "@media (min-width: 1024px)": {
-                gridRow: index + 1,
-                gridColumn: `${index % 2 === 0 ? 1 : 2} / span 2`,
+                transform: `rotateX(-15deg) rotateY(15deg)${index % 2 !== 0 ? '' : ' translateY(1.25rem)'}`
               },
               transition: "transform .5s",
               ":hover": {
                 color: "#039",
                 textDecoration: "none",
-                transform: `rotateX(-15deg) rotateY(15deg) translateY(${index % 2 !== 0 ? '-0.5' : '1.5'}em)`,
+                transform: `rotateX(-15deg) rotateY(15deg) translateY(${index % 2 !== 0 ? '-0.5' : '1.5'}em)`
               },
-              transform: `rotateX(-15deg) rotateY(15deg)${index % 2 !== 0 ? '' : ' translateY(2em)'}`,
-              boxShadow: ".5em .5em 0.2em 0.2em rgba($gray-700, 0.4)"
             })}`}
             href={
               testimonial.node.attachment
@@ -100,10 +107,15 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         padding: " 0.5rem 1rem",
         alignSelf: "start",
         borderRadius: "0.25rem",
-        fontWeight: "normal"
+        fontWeight: "normal",
+        marginTop: "3em",
+        "@media (min-width: 1024px)": {
+          marginTop: "0"
+        }
       })}>
-        I think I'm sold!
+        Sold? Get in touch!
       </a>
+      </div>
     </section>
   );
 };

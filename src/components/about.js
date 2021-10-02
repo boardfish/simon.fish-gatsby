@@ -20,7 +20,7 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        "@media (min-width: 992px)": {
+        "@media (min-width: 1024px)": {
           display: "grid",
           gridTemplateColumns: "auto auto",
           gridGap: "1em",
@@ -29,6 +29,9 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
     >
       <div>
         <div
+          className={css({
+            maxWidth: "65ch"
+          })}
           dangerouslySetInnerHTML={{
             __html: data.longBio.childMarkdownRemark.html,
           }}
@@ -44,7 +47,14 @@ export default ({ data, backgroundColor, color, darkenAmount }) => {
           What do other folks think?
         </a>
       </div>
-      <Img fixed={data.heroImage.fixed} />
+      <div className={css({
+        marginTop: "3em",
+        "@media (min-width: 1024px)": {
+          marginTop: "0"
+        }
+      })}>
+        <Img fixed={data.heroImage.fixed} />
+      </div>
 
     </section>
   );

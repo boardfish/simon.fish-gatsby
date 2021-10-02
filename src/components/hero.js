@@ -16,54 +16,23 @@ export default ({ data, id = "hero", backgroundColor, color, darkenAmount }) => 
         backgroundColor: bgColor,
         color: fgColor,
         "@media (min-width: 1024px)": {
-          display: "grid",
-          gridTemplateColumns: "75% auto",
-          alignItems: "center",
           height: "100vh",
         },
+        display: "grid",
+        alignItems: "center"
       })}
     >
+      <div className={css({
+
+        "@media (min-width: 1024px)": {
+          display: "grid",
+          alignItems: "center",
+        }
+      })}>
       <div
         className={css({
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          "@media (min-width: 1024px)": {
-            margin: "0 3rem",
-            width: "90%",
-          },
-        })}
-      >
-        <div
-          dangerouslySetInnerHTML={{
-            __html: data.tagline.childMarkdownRemark.html,
-          }}
-        ></div>
-        <div
-          className="lead"
-          dangerouslySetInnerHTML={{
-            __html: data.shortBio.childMarkdownRemark.html,
-          }}
-        ></div>
-        <a href="#about" className={css({
-          background: fgColor,
-          color: bgColor,
-          padding: " 0.5rem 1rem",
-          alignSelf: "start",
-          borderRadius: "0.25rem",
-          fontWeight: "normal"
-        })}>
-          👋 Say hi!
-        </a>
-      </div>
-      <div
-        className={css({
-          height: "inherit",
-          overflowY: "hidden",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr'
         })}
       >
         {images.slice(0, 3).map((image) => (
@@ -92,6 +61,43 @@ export default ({ data, id = "hero", backgroundColor, color, darkenAmount }) => 
             imgStyle={{ objectFit: "contain" }}
           />
         ))}
+      </div>
+      <div
+        className={css({
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          "@media (min-width: 1024px)": {
+            margin: "0 3rem",
+            width: "90%",
+          },
+        })}
+      >
+        <div
+          className={css({textAlign: "center"})}
+          dangerouslySetInnerHTML={{
+            __html: data.tagline.childMarkdownRemark.html,
+          }}
+        ></div>
+        <div
+          className={`lead ${css({maxWidth: '75ch', textAlign: "center"})}`}
+          dangerouslySetInnerHTML={{
+            __html: data.shortBio.childMarkdownRemark.html,
+          }}
+        ></div>
+        <a href="#about" className={css({
+          background: fgColor,
+          color: bgColor,
+          padding: " 0.5rem 1rem",
+          borderRadius: "0.25rem",
+          fontWeight: "normal"
+        })}>
+          👋 Say hi!
+        </a>
+      </div>
+
       </div>
     </section>
   );
