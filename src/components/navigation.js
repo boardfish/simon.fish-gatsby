@@ -83,6 +83,26 @@ export default ({ data, backgroundColor, color }) => {
             })}
           >
             <Link
+              to="#portfolio"
+              className={
+                "nav-link " +
+                css({
+                  fontWeight: "bold",
+                  fontSize: "1.5rem",
+                })
+              }
+            >
+              Portfolio
+            </Link>
+          </NavItem>
+          <NavItem
+            className={css({
+              "@media (min-width: 1024px)": {
+                marginBottom: "2rem",
+              },
+            })}
+          >
+            <Link
               to="#testimonials"
               className={
                 "nav-link " +
@@ -142,35 +162,6 @@ export default ({ data, backgroundColor, color }) => {
               },
             })}
           >
-            <hr className={css({ borderColor: fgColor })}></hr>
-          </NavItem>
-          <NavItem
-            className={css({
-              "@media (min-width: 1024px)": {
-                marginBottom: "2rem",
-              },
-            })}
-          >
-            <Link
-              to="portfolio"
-              className={
-                "nav-link " +
-                css({
-                  fontWeight: "bold",
-                  fontSize: "1.5rem",
-                })
-              }
-            >
-              Portfolio
-            </Link>
-          </NavItem>
-          <NavItem
-            className={css({
-              "@media (min-width: 1024px)": {
-                marginBottom: "2rem",
-              },
-            })}
-          >
             <Link
               to="/uses"
               className={
@@ -183,15 +174,6 @@ export default ({ data, backgroundColor, color }) => {
             >
               /uses
             </Link>
-          </NavItem>
-          <NavItem
-            className={css({
-              "@media (min-width: 1024px)": {
-                marginBottom: "2rem",
-              },
-            })}
-          >
-            <hr className={css({ borderColor: fgColor })}></hr>
           </NavItem>
           <NavItem
             className={css({

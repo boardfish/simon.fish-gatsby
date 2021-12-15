@@ -21,6 +21,10 @@ export default (props) => {
       return rv;
     }, {});
   };
+  const portfolio = { "Key Projects": groupBy(
+    get(props, "data.allContentfulPortfolioItem.edges"),
+    "node.category"
+  )["Key Projects"] };
   const { title, helmet } = useSiteMetadata();
 
   return (
@@ -28,7 +32,8 @@ export default (props) => {
       <Helmet title={title} {...helmet} />
       <Hero data={author.node} darkenAmount={10} />
       <About data={author.node} darkenAmount={8} />
-      <Testimonials data={testimonials} darkenAmount={6} />
+      <Portfolio data={portfolio} darkenAmount={6} />
+      <Testimonials data={testimonials} darkenAmount={4} />
       <Blog data={blog} darkenAmount={2} />
       <Contact data={props.data.allContentfulSocialLink.edges} />
     </Layout>
@@ -116,6 +121,34 @@ export const pageQuery = graphql`
             file {
               url
             }
+          }
+        }
+      }
+    }
+    allContentfulPortfolioItem(sort: { fields: [priority, endDate, date], order: [DESC, DESC, DESC] }) {
+      edges {
+        node {
+          id
+          date(formatString: "MMM Do, 'YY")
+          endDate(formatString: "MMM Do, 'YY")
+          location
+          projectName
+          summary
+          title
+          category
+          images {
+            fluid {
+              src
+            }
+          }
+          tools {
+            icon {
+              file {
+                url
+              }
+            }
+            color
+            name
           }
         }
       }
